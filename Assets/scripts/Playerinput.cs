@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class Playerinput : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public float direccionX;
+    
 
-    // Update is called once per frame
     void Update()
     {
-        
+        DetectarMovimiento();
+    }
+
+    private void DetectarMovimiento()
+    {
+        direccionX = Input.GetAxisRaw("Horizontal");
+        print(direccionX);
+
     }
 }
