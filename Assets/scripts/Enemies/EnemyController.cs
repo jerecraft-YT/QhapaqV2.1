@@ -10,7 +10,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float distanceForMove = 5.0f;
     [SerializeField] private float cooldownAttack = 0.5f;
     //esto se usara para poder hacer que el ataque no se haga a cada rato
-    private float timeCooldown;
+    private float timeCooldownAttack;
 
     private void Update()
     {
@@ -38,6 +38,8 @@ public class EnemyController : MonoBehaviour
 
         if (distance < distanceForMove)
         {
+            timeCooldownAttack = 0.0f;
+
             Vector3 direccionMovimiento = (targetEnemy.position - transform.position).normalized;
 
             transform.position += Time.deltaTime * enemySpeed * direccionMovimiento;
@@ -47,12 +49,12 @@ public class EnemyController : MonoBehaviour
     private void EnemyAttack()
     {
         //esto es un tiempo de espera entre cada ataque
-        timeCooldown += Time.deltaTime;
+        timeCooldownAttack += Time.deltaTime;
 
-        if (timeCooldown > cooldownAttack)
+        if (timeCooldownAttack > cooldownAttack)
         {
             print("attack");
-            timeCooldown = 0.0f;
+            timeCooldownAttack = 0.0f;
         }
     }
 }

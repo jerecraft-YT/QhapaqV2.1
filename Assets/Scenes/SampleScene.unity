@@ -152,7 +152,7 @@ MonoBehaviour:
   targetEnemy: {fileID: 1715603801}
   enemySpeed: 2
   distanceForAttack: 1
-  distanceForMove: 5
+  distanceForMove: 7
   cooldownAttack: 0.5
 --- !u!212 &281825703
 SpriteRenderer:
@@ -970,7 +970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3744f2d777a8b6240a404fbadc9c2224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Playerinput
-  presionoBotonAccion: 0
+  presionoBotonDash: 0
   direccionMovimiento: {x: 0, y: 0}
 --- !u!114 &1715603803
 MonoBehaviour:
@@ -987,6 +987,9 @@ MonoBehaviour:
   input: {fileID: 1715603802}
   rb: {fileID: 1715603804}
   speed: 4
+  dashSpeed: 20
+  cooldownDash: 0.4
+  duracionDash: 0.15
 --- !u!50 &1715603804
 Rigidbody2D:
   serializedVersion: 5
