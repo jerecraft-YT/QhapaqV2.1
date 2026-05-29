@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
 
     //una cosa es que puedes ponerle valores por defecto a tus variables, esto te evita
     //que tengas que ir al inspector a cambiarle el valor cada vez que creas uno nuevo
-    [SerializeField] private float speed = 3.0f;
+    [SerializeField] private float speed = 4.0f;
 
     //cuando trabajes con fisicas es mejor usar FixedUpdate que Update
     void FixedUpdate()
