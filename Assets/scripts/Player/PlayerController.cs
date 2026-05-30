@@ -68,6 +68,7 @@ public class PlayerController : MonoBehaviour
             {
                 haciendoDash = true;
                 timeDuracionDash = 0.0f;
+                print("Dash");
             }
         }
         else
