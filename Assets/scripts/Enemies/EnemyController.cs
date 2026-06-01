@@ -53,7 +53,7 @@ public class EnemyController : MonoBehaviour
 
         if (timeCooldownAttack > cooldownAttack)
         {
-            print("attack");
+            //print("attack");
             timeCooldownAttack = 0.0f;
         }
     }

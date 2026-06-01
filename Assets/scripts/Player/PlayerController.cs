@@ -13,10 +13,6 @@ public class PlayerController : MonoBehaviour
     //pero como quiero que se vea desde el inspector le ponemos [SerializeField] y ya
     [SerializeField] private Playerinput input;
 
-    //como necesitamos el rigidBody del jugador para moverlo y que choque entonces lo obtenemos
-    //y lo guardamos en una variable, recuerda establecerlo desde el inspector
-    [SerializeField] private Rigidbody2D rb;
-
     //una cosa es que puedes ponerle valores por defecto a tus variables, esto te evita
     //que tengas que ir al inspector a cambiarle el valor cada vez que creas uno nuevo
     [SerializeField] private float speed = 4.0f;
@@ -25,44 +21,47 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float cooldownDash = 0.2f;
     [SerializeField] private float duracionDash = 0.5f;
     //ponemos una direccion por defecto
-    private Vector2 ultimaDireccion = Vector2.right;
+    private Vector3 ultimaDireccion = Vector2.right;
     private bool haciendoDash;
+    public bool puedeAtacar;
     private float timeCooldownDash;
     private float timeDuracionDash;
 
+    public GameObject flechaPrefab;
+
+    public float fuerzaDisparo;
+
     //cuando trabajes con fisicas es mejor usar FixedUpdate que Update
-    void FixedUpdate()
+    void Update()
     {
         MovePlayer();
         DashPlayer();
+        ShotPlayer();
     }
     private void MovePlayer()
     {
         //si esta haciendo dash no dejaremos que te muevas por tu cuenta
-        if (haciendoDash)
+        if (haciendoDash == false)
         {
-            return;
-        }
-        //esta seria la forma mas facil de mover al jugador pero si seguimos por este camino, sufriremos mucho para las colisiones
-        //basicamente porque tendriamos que hacerlas nosotros
-        //transform.position += new Vector3(input.direccionMovimiento.x,input.direccionMovimiento.y,0.0f) * speed * Time.deltaTime;
+            //mueve al jugador
+            Vector3 direccion = new Vector3(input.direccionMovimiento.x, input.direccionMovimiento.y, 0.0f);
 
-        //es mejor aprovechar el rigidBody2d, linear velocity le da una velocidad constante, ademas como son fisicas no es necesario
-        //usar Time.deltaTime ya que el mismo motor de fisicas lo integra
-        rb.linearVelocity = new Vector2(input.direccionMovimiento.x, input.direccionMovimiento.y) * speed;
+            transform.position += direccion * speed * Time.deltaTime;
+        }
     }
 
     private void DashPlayer()
     {
-        if (!haciendoDash)
+        if (haciendoDash == false)
         {
             timeCooldownDash -= Time.deltaTime;
 
             //esto sirve para obtener la ultima direccion en la que te moviste
-            if (input.direccionMovimiento != Vector2.zero)
+            if(input.direccionMovimiento != Vector2.zero)
             {
                 ultimaDireccion = input.direccionMovimiento;
             }
+            
 
             if (input.presionoBotonDash && timeCooldownDash <= 0)
             {
@@ -80,9 +79,44 @@ public class PlayerController : MonoBehaviour
                 haciendoDash = false;
                 return;
             }
-
-            rb.linearVelocity = ultimaDireccion * dashSpeed;
+            transform.position += ultimaDireccion * dashSpeed * Time.deltaTime;
             timeDuracionDash += Time.deltaTime;
         }
+    }
+
+    private void ShotPlayer()
+    {
+        if (input.presionoBotonAtacar)
+        {
+            fuerzaDisparo += Time.deltaTime * 5.0f;
+        }
+
+        if (input.presionoBotonAtacar == true)
+        {
+            puedeAtacar = true;
+        }
+        if (input.presionoBotonAtacar == false && puedeAtacar == true)
+        {
+            puedeAtacar = false;
+            CrearFlecha();
+            fuerzaDisparo = 3.0f;
+        }
+    }
+
+    private void CrearFlecha()
+    {
+        puedeAtacar = false;
+        print("atacar");
+
+        Vector3 myPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        Vector3 direction = myPos - transform.position;
+        direction.z = 0.0f;
+        direction.Normalize();
+
+        GameObject flecha = Instantiate(flechaPrefab, transform.position, Quaternion.identity);
+        flecha.transform.up = direction;
+        Flecha script = flecha.GetComponent<Flecha>();
+        script.speed = fuerzaDisparo;
     }
 }

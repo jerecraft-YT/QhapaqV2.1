@@ -2,7 +2,12 @@ using UnityEngine;
 
 public class Flecha : MonoBehaviour
 {
-    private float speed = 10.0f;
+    public float speed = 10.0f;
+    public float timeLive = 3.0f;
+    private void Start()
+    {
+        Destroy(gameObject,timeLive);
+    }
 
     void Update()
     {

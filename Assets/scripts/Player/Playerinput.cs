@@ -5,6 +5,7 @@ public class Playerinput : MonoBehaviour
     //como estos valores si los necesitamos para usar en otros lados los hacemos publicos
 
     public bool presionoBotonDash;
+    public bool presionoBotonAtacar;
 
     //se usa un vector2 para agrupar el eje x,y en uno solo y asi sea mas comodo en vez de llamar a dos valores
     //diferentes que encima no estaran normalizados
@@ -33,6 +34,7 @@ public class Playerinput : MonoBehaviour
     private void DetectarBotones()
     {
         //obtenemos el estado del boton de accion, como es boleano no hay necesidad de hacer nada mas
-        presionoBotonDash = Input.GetButton("Dash");
+        presionoBotonDash = Input.GetKey(KeyCode.LeftControl);
+        presionoBotonAtacar = Input.GetKey(KeyCode.Mouse0);
     }
 }
