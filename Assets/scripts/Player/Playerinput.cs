@@ -35,6 +35,6 @@ public class Playerinput : MonoBehaviour
     {
         //obtenemos el estado del boton de accion, como es boleano no hay necesidad de hacer nada mas
         presionoBotonDash = Input.GetKey(KeyCode.LeftControl);
-        presionoBotonAtacar = Input.GetKey(KeyCode.Mouse0);
+        presionoBotonAtacar = Input.GetMouseButtonDown(0);
     }
 }

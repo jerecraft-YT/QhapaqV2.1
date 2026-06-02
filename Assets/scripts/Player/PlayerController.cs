@@ -23,13 +23,10 @@ public class PlayerController : MonoBehaviour
     //ponemos una direccion por defecto
     private Vector3 ultimaDireccion = Vector2.right;
     private bool haciendoDash;
-    public bool puedeAtacar;
     private float timeCooldownDash;
     private float timeDuracionDash;
 
     public GameObject flechaPrefab;
-
-    public float fuerzaDisparo;
 
     //cuando trabajes con fisicas es mejor usar FixedUpdate que Update
     void Update()
@@ -62,7 +59,6 @@ public class PlayerController : MonoBehaviour
                 ultimaDireccion = input.direccionMovimiento;
             }
             
-
             if (input.presionoBotonDash && timeCooldownDash <= 0)
             {
                 haciendoDash = true;
@@ -70,9 +66,9 @@ public class PlayerController : MonoBehaviour
                 print("Dash");
             }
         }
-        else
+        if (haciendoDash == true)
         {
-            if (timeDuracionDash > duracionDash)
+            if (timeDuracionDash >= duracionDash)
             {
                 timeDuracionDash = 0.0f;
                 timeCooldownDash = cooldownDash;
@@ -86,26 +82,14 @@ public class PlayerController : MonoBehaviour
 
     private void ShotPlayer()
     {
-        if (input.presionoBotonAtacar)
-        {
-            fuerzaDisparo += Time.deltaTime * 5.0f;
-        }
-
         if (input.presionoBotonAtacar == true)
         {
-            puedeAtacar = true;
-        }
-        if (input.presionoBotonAtacar == false && puedeAtacar == true)
-        {
-            puedeAtacar = false;
             CrearFlecha();
-            fuerzaDisparo = 3.0f;
         }
     }
 
     private void CrearFlecha()
     {
-        puedeAtacar = false;
         print("atacar");
 
         Vector3 myPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -116,7 +100,5 @@ public class PlayerController : MonoBehaviour
 
         GameObject flecha = Instantiate(flechaPrefab, transform.position, Quaternion.identity);
         flecha.transform.up = direction;
-        Flecha script = flecha.GetComponent<Flecha>();
-        script.speed = fuerzaDisparo;
     }
 }
