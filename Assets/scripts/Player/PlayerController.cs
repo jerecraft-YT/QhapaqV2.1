@@ -28,20 +28,21 @@ public class PlayerController : MonoBehaviour
 
     public GameObject flechaPrefab;
 
-    //cuando trabajes con fisicas es mejor usar FixedUpdate que Update
     void Update()
     {
-        MovePlayer();
+        MovePlayer(input.direccionMovimiento.x, input.direccionMovimiento.y);
         DashPlayer();
         ShotPlayer();
     }
-    private void MovePlayer()
+
+    //esta funcion sirve para mover al jugador y le pasamos las direcciones del script de input
+    private void MovePlayer(float direccionMovimientoX,float direccionMovimientoY)
     {
         //si esta haciendo dash no dejaremos que te muevas por tu cuenta
         if (haciendoDash == false)
         {
             //mueve al jugador
-            Vector3 direccion = new Vector3(input.direccionMovimiento.x, input.direccionMovimiento.y, 0.0f);
+            Vector3 direccion = new Vector3(direccionMovimientoX, direccionMovimientoY, 0.0f);
 
             transform.position += direccion * speed * Time.deltaTime;
         }
@@ -51,32 +52,47 @@ public class PlayerController : MonoBehaviour
     {
         if (haciendoDash == false)
         {
-            timeCooldownDash -= Time.deltaTime;
-
-            //esto sirve para obtener la ultima direccion en la que te moviste
-            if(input.direccionMovimiento != Vector2.zero)
-            {
-                ultimaDireccion = input.direccionMovimiento;
-            }
-            
-            if (input.presionoBotonDash && timeCooldownDash <= 0)
-            {
-                haciendoDash = true;
-                timeDuracionDash = 0.0f;
-                print("Dash");
-            }
+            ControlNoHacerDash(input.direccionMovimiento, input.presionoBotonDash);
         }
         if (haciendoDash == true)
         {
-            if (timeDuracionDash >= duracionDash)
-            {
-                timeDuracionDash = 0.0f;
-                timeCooldownDash = cooldownDash;
-                haciendoDash = false;
-                return;
-            }
+            ControlHacerDash();
+        }
+    }
+
+    private void ControlHacerDash()
+    {
+        if (timeDuracionDash >= duracionDash && haciendoDash == true)
+        {
+            timeDuracionDash = 0.0f;
+            timeCooldownDash = cooldownDash;
+            haciendoDash = false;
+            return;
+        }
+        else
+        {
+            //mover al jugador si hace el dash
             transform.position += ultimaDireccion * dashSpeed * Time.deltaTime;
             timeDuracionDash += Time.deltaTime;
+        }
+    }
+    //esta funcion sirve para controlar todo lo que debe pasar mientras no haces el dash
+    //como el tiempo de espera entre dash o que te deje activarlo
+    private void ControlNoHacerDash(Vector2 direccionMovimiento,bool presionoBotonDash)
+    {
+        timeCooldownDash -= Time.deltaTime;
+
+        //esto sirve para obtener la ultima direccion en la que te moviste
+        if (direccionMovimiento != Vector2.zero)
+        {
+            ultimaDireccion = direccionMovimiento;
+        }
+
+        if (presionoBotonDash && timeCooldownDash <= 0)
+        {
+            haciendoDash = true;
+            timeDuracionDash = 0.0f;
+            print("Dash");
         }
     }
 
@@ -84,17 +100,16 @@ public class PlayerController : MonoBehaviour
     {
         if (input.presionoBotonAtacar == true)
         {
-            CrearFlecha();
+            //le pasamos a la funcion la posicion actual del mouse
+            CrearFlecha(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }
     }
-
-    private void CrearFlecha()
+    //esta funcion sirve para crear el proyectil en la escena
+    private void CrearFlecha(Vector3 MousePos)
     {
         print("atacar");
 
-        Vector3 myPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        Vector3 direction = myPos - transform.position;
+        Vector3 direction = MousePos - transform.position;
         direction.z = 0.0f;
         direction.Normalize();
 
