@@ -4,7 +4,7 @@ public class EnemyController : MonoBehaviour
 {
     //se que por como esta programado el enemigo puede atravesar paredes pero pidieron simple :P
 
-    [SerializeField] private Transform targetEnemy;
+    public Transform targetEnemy;
     [SerializeField] private float enemySpeed = 2.0f;
     [SerializeField] private float distanceForAttack = 1f;
     [SerializeField] private float distanceForMove = 5.0f;
