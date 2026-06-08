@@ -25,15 +25,14 @@ public class PlayerController : MonoBehaviour
     private bool haciendoDash;
     private float timeCooldownDash;
     private float timeDuracionDash;
-
     public GameObject flechaPrefab;
-
     void Update()
     {
         MovePlayer(input.direccionMovimiento.x, input.direccionMovimiento.y);
         DashPlayer();
         ShotPlayer();
     }
+
 
     //esta funcion sirve para mover al jugador y le pasamos las direcciones del script de input
     private void MovePlayer(float direccionMovimientoX,float direccionMovimientoY)
@@ -115,5 +114,10 @@ public class PlayerController : MonoBehaviour
 
         GameObject flecha = Instantiate(flechaPrefab, transform.position, Quaternion.identity);
         flecha.transform.up = direction;
+    }
+
+    public void ObtenerItem(TipoItem item)
+    {
+        print("obtuviste un" + item);
     }
 }
