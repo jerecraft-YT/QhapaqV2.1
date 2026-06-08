@@ -3,7 +3,6 @@ using UnityEngine;
 public class objetoInteractuable : MonoBehaviour
 {
     public PlayerController player;
-    public TipoItem tipoItem = TipoItem.ARCO;
     public float timeToRespawn = 2.0f;
     public float distanceToInteract = 4.0f;
     private float timeRespawn;
