@@ -1,12 +1,5 @@
 using UnityEngine;
 
-public enum TipoItem
-{
-    ARCO,
-    ESPADA,
-    MONEDA
-}
-
 public class objetoInteractuable : MonoBehaviour
 {
     public PlayerController player;
@@ -50,18 +43,7 @@ public class objetoInteractuable : MonoBehaviour
                 interactuable = false;
                 sprite.enabled = false;
                 timeRespawn = 0.0f;
-                player.ObtenerItem(tipoItem);
-                
-                //esto deberia ir en el jugador para verificar el tipo
-                switch (tipoItem)
-                {
-                    case TipoItem.ARCO:
-
-                        break;
-                    case TipoItem.ESPADA:
-
-                        break;
-                }
+                player.ObtenerItem("Arco");
             }
         }
     }

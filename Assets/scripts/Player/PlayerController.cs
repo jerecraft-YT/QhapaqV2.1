@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
         flecha.transform.up = direction;
     }
 
-    public void ObtenerItem(TipoItem item)
+    public void ObtenerItem(string item)
     {
         print("obtuviste un" + item);
     }
