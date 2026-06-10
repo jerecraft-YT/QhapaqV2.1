@@ -8,7 +8,6 @@ public class parpadeoAntorcha : MonoBehaviour
     Vector3 GlowEscalaMaxima = new Vector3(1.25f, 1.25f, 0.0f);
     float velocidadEscalado = 0.5f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //para que cada efecto tenga un inicio diferente y varien un poquito
