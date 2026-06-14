@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
     //estoy usando ([SerializeField] private) porque estas variables solo las usaremos aqui
     //pero como quiero que se vea desde el inspector le ponemos [SerializeField] y ya
     [SerializeField] private Playerinput input;
-    [SerializeField] private SpriteRenderer playerSprite;
 
     //una cosa es que puedes ponerle valores por defecto a tus variables, esto te evita
     //que tengas que ir al inspector a cambiarle el valor cada vez que creas uno nuevo
@@ -27,16 +26,8 @@ public class PlayerController : MonoBehaviour
     private float timeCooldownDash;
     private float timeDuracionDash;
     public GameObject flechaPrefab;
-    float time = 0;
     void Update()
     {
-        
-        time += Time.deltaTime * 30.0f;
-
-        playerSprite.color = new Color(1.0f, 0.7f + Mathf.Cos(time) * 0.3f, 0.7f + Mathf.Cos(time) * 0.3f, 1.0f);
-
-        playerSprite.transform.localScale = new Vector3(1.0f + 0.02f * Mathf.Cos(time), 1.0f + 0.05f * Mathf.Cos(time), 1.0f);
-
         MovePlayer(input.direccionMovimiento.x, input.direccionMovimiento.y);
         DashPlayer();
         ShotPlayer();
@@ -117,11 +108,15 @@ public class PlayerController : MonoBehaviour
     {
         print("atacar");
 
-        Vector3 direction = MousePos - transform.position;
+        Vector3 playerPosition = transform.position; 
+
+        Vector3 direction = MousePos - playerPosition;
         direction.z = 0.0f;
         direction.Normalize();
+        
+        //Quaternion identity representa rotacion 0 del objeto osea 0 grados
+        GameObject flecha = Instantiate(flechaPrefab, playerPosition, Quaternion.identity);
 
-        GameObject flecha = Instantiate(flechaPrefab, transform.position, Quaternion.identity);
         flecha.transform.up = direction;
     }
 

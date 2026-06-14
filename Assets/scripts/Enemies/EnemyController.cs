@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float distanceForAttack = 1f;
     [SerializeField] private float distanceForMove = 5.0f;
     [SerializeField] private float cooldownAttack = 0.5f;
+
     //esto se usara para poder hacer que el ataque no se haga a cada rato
     private float timeCooldownAttack;
 
