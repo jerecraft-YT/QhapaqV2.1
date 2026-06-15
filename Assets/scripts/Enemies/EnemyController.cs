@@ -1,30 +1,198 @@
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
+using static UnityEngine.GraphicsBuffer;
 
 public class EnemyController : MonoBehaviour
 {
+    public enum EnemyState
+    {
+        //no hacer nada
+        None,
+        //quieto
+        idle,
+        //atacar
+        Attack,
+        //perseguir
+        Chase,
+        //patrullar
+        Patrol
+    }
+
     //se que por como esta programado el enemigo puede atravesar paredes pero pidieron simple :P
 
     public Transform targetEnemy;
+
+    public EnemyState state;
+
     [SerializeField] private float enemySpeed = 2.0f;
+
     [SerializeField] private float distanceForAttack = 1f;
     [SerializeField] private float distanceForMove = 5.0f;
-    [SerializeField] private float cooldownAttack = 0.5f;
 
-    //esto se usara para poder hacer que el ataque no se haga a cada rato
+    //cosas para que el personaje patrulle
+    [SerializeField] private float timeForPatrol = 2.0f;
+    [SerializeField] private float distanceForPatrol = 2.0f;
+    //para que se frene si esta muy cerca del punto que se le establecio para patrullar
+    [SerializeField] private float distanceForStopPatrol = 0.1f;
+    //punto al cual se movera para patrullar
+    private Vector3 patrolPoint;
+    private float timePatrol;
+
+    //cosas para el ataque
+    [SerializeField] private float cooldownAttack = 0.5f;
     private float timeCooldownAttack;
 
     private void Update()
     {
-        EnemyMovement();
+
+
+        EnemyStateController();
     }
 
-    private void EnemyMovement()
-    {
+    private void EnemyStateController()
+    {   
         //si no se establecio un target entonces salimos de la funcion para no tener errores
         if (targetEnemy == null)
         {
             return;
         }
+
+        switch (state)
+        {
+            case EnemyState.None:
+                state = EnemyState.idle;
+                break;
+            case EnemyState.idle:
+                //acciones que hara cuando este quieto
+                EnemyIdle();
+                break;
+            case EnemyState.Attack:
+                //acciones que hara cuando este atacando
+                EnemyAttack();
+                break;
+            case EnemyState.Chase:
+                //acciones que hara cuando te este persiguiendo
+                EnemyChase();
+                break;
+            case EnemyState.Patrol:
+                //acciones que hara cuando este patrullando
+                EnemyPatrol();
+                break;
+            default:
+                state = EnemyState.idle;
+                break;
+        }
+    }
+
+    private void EnemyIdle()
+    {
+        //control para que pueda salir de ese estado de quieto
+        Vector3 target = targetEnemy.position;
+        Vector3 myPos = transform.position;
+
+        float distance = Vector3.Distance(myPos, target);
+
+        if (distance < distanceForMove)
+        {
+            
+            state = EnemyState.Chase;
+            //para que el tiempo de patrullaje no se acumule
+            timePatrol = 0;
+        }
+
+        //abajo irian otras cosas
+        timePatrol += Time.deltaTime;
+
+        if (timePatrol > timeForPatrol)
+        {
+            timePatrol = 0;
+            state = EnemyState.Patrol;
+
+            patrolPoint = new Vector3(myPos.x + Random.Range(-distanceForPatrol, distanceForPatrol), myPos.y + Random.Range(-distanceForPatrol, distanceForPatrol), 0.0f);
+        }
+    }
+
+    private void EnemyChase()
+    {
+        //control para que pueda salir de ese estado de persiguiendo
+        Vector3 target = targetEnemy.position;
+        Vector3 myPos = transform.position;
+
+        float distance = Vector3.Distance(myPos, target);
+
+        if (distance > distanceForMove)
+        {
+            state = EnemyState.idle;
+        }
+
+        if (distance < distanceForAttack)
+        {
+            state = EnemyState.Attack;
+        }
+
+        //abajo irian otras cosas para que persiga
+        timeCooldownAttack = 0.0f;
+
+        Vector3 direccionMovimiento = (target - myPos).normalized;
+
+        transform.position += Time.deltaTime * enemySpeed * direccionMovimiento;
+    }
+
+    private void EnemyAttack()
+    {
+        //control para que pueda salir de ese estado de atacando
+        Vector3 target = targetEnemy.position;
+        Vector3 myPos = transform.position;
+
+        float distance = Vector3.Distance(myPos, target);
+
+        if (distance > distanceForAttack)
+        {
+            state = EnemyState.Chase;
+        }
+
+        //abajo irian otras cosas para que ataque
+
+        //esto es un tiempo de espera entre cada ataque
+        timeCooldownAttack += Time.deltaTime;
+
+        if (timeCooldownAttack > cooldownAttack)
+        {
+            print("te atacaron");
+            timeCooldownAttack = 0.0f;
+        }
+    }
+
+    private void EnemyPatrol()
+    {
+        //control para que pueda salir de ese estado de patrullando
+        Vector3 myPos = transform.position;
+
+        float distance = Vector3.Distance(myPos, patrolPoint);
+
+        Vector3 target = targetEnemy.position;
+
+        float toPlayerDistance = Vector3.Distance(myPos, target);
+
+        if (distance < distanceForStopPatrol)
+        {
+            state = EnemyState.idle;
+        }
+
+        if (toPlayerDistance < distanceForMove)
+        {
+            state = EnemyState.Chase;
+        }
+
+        //abajo irian otras cosas para que patrulle
+
+        Vector3 direccionMovimiento = (patrolPoint - myPos).normalized;
+
+        transform.position += Time.deltaTime * enemySpeed * direccionMovimiento;
+    }
+
+    private void EnemyMovement()
+    {
 
         float distance = Vector2.Distance(transform.position,targetEnemy.position);
 
@@ -44,18 +212,6 @@ public class EnemyController : MonoBehaviour
             Vector3 direccionMovimiento = (targetEnemy.position - transform.position).normalized;
 
             transform.position += Time.deltaTime * enemySpeed * direccionMovimiento;
-        }
-    }
-
-    private void EnemyAttack()
-    {
-        //esto es un tiempo de espera entre cada ataque
-        timeCooldownAttack += Time.deltaTime;
-
-        if (timeCooldownAttack > cooldownAttack)
-        {
-            //print("attack");
-            timeCooldownAttack = 0.0f;
         }
     }
 }
