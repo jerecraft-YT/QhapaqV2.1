@@ -8,14 +8,13 @@ public class objetoInteractuable : MonoBehaviour
     private float timeRespawn;
     private bool interactuable = true;
     private SpriteRenderer sprite;
+    public lootCaja contenidoCaja;
 
 
     private void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
     }
-
-
 
     // Update is called once per frame
     void Update()
@@ -42,7 +41,24 @@ public class objetoInteractuable : MonoBehaviour
                 interactuable = false;
                 sprite.enabled = false;
                 timeRespawn = 0.0f;
-                player.ObtenerItem("Arco");
+
+                switch (contenidoCaja)
+                {
+                    case lootCaja.None:
+                        break;
+                    case lootCaja.RecargaDash:
+                        player.ObtenerItem("RecargaDash");
+                        break;
+                    case lootCaja.Vida:
+                        player.ObtenerItem("Vida");
+                        break;
+                    case lootCaja.Arco:
+                        player.ObtenerItem("Arco");
+                        break;
+                    default:
+                        break;
+                }
+
             }
         }
     }

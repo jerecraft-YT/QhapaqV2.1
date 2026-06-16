@@ -2,19 +2,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //como para mover al personaje necesitamos saber si se presiono una
-    //tecla entonces buscamos el script que detecta eso
-
-    //obtener un script es super facil, solo en la parte donde tiene que ir el tipo
-    //como int, float, bool, etc, ahi le pondrias el nombre de tu script
-    //ademas asegurate de hacerlo publico para luego agregar el script desde el inspector
-
     //estoy usando ([SerializeField] private) porque estas variables solo las usaremos aqui
     //pero como quiero que se vea desde el inspector le ponemos [SerializeField] y ya
     [SerializeField] private Playerinput input;
-
-    //una cosa es que puedes ponerle valores por defecto a tus variables, esto te evita
-    //que tengas que ir al inspector a cambiarle el valor cada vez que creas uno nuevo
+    [SerializeField] private SpriteRenderer burbujaDialogo;
+    public bool puedeDialogar = false;
     [SerializeField] private float speed = 4.0f;
 
     [SerializeField] private float dashSpeed = 10.0f;
@@ -31,8 +23,22 @@ public class PlayerController : MonoBehaviour
         MovePlayer(input.direccionMovimiento.x, input.direccionMovimiento.y);
         DashPlayer();
         ShotPlayer();
+
+        //esto es aparte del movimiento
+        ControlDialogo();
     }
 
+    private void ControlDialogo()
+    {
+        if (puedeDialogar == true)
+        {
+            burbujaDialogo.enabled = true;
+        }
+        if (puedeDialogar == false)
+        {
+            burbujaDialogo.enabled = false;
+        }
+    }
 
     //esta funcion sirve para mover al jugador y le pasamos las direcciones del script de input
     private void MovePlayer(float direccionMovimientoX,float direccionMovimientoY)
@@ -122,6 +128,6 @@ public class PlayerController : MonoBehaviour
 
     public void ObtenerItem(string item)
     {
-        print("obtuviste un" + item);
+        print("obtuviste un/a: " + item);
     }
 }

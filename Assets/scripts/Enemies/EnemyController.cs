@@ -1,6 +1,4 @@
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
-using static UnityEngine.GraphicsBuffer;
 
 public class EnemyController : MonoBehaviour
 {
@@ -189,29 +187,5 @@ public class EnemyController : MonoBehaviour
         Vector3 direccionMovimiento = (patrolPoint - myPos).normalized;
 
         transform.position += Time.deltaTime * enemySpeed * direccionMovimiento;
-    }
-
-    private void EnemyMovement()
-    {
-
-        float distance = Vector2.Distance(transform.position,targetEnemy.position);
-
-        //comprobamos esto primero ya que si esta muy cerca del jugador podemos evitar calcular el movimiento
-        if (distance < distanceForAttack)
-        {
-            //por organizacion hacemos que el codigo del ataque este en otra funcion
-            EnemyAttack();
-            //si esta muy cerca del jugador podemos abandonar antes esta funcion ya que no necesita moverse
-            return;
-        }
-
-        if (distance < distanceForMove)
-        {
-            timeCooldownAttack = 0.0f;
-
-            Vector3 direccionMovimiento = (targetEnemy.position - transform.position).normalized;
-
-            transform.position += Time.deltaTime * enemySpeed * direccionMovimiento;
-        }
     }
 }
