@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    //se que por como esta programado el enemigo puede atravesar paredes pero pidieron simple :P
-
     public Transform targetCamera;
 
     [SerializeField] private float CameraSpeed = 2.0f;

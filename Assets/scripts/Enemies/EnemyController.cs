@@ -16,8 +16,6 @@ public class EnemyController : MonoBehaviour
         Patrol
     }
 
-    //se que por como esta programado el enemigo puede atravesar paredes pero pidieron simple :P
-
     public Transform targetEnemy;
 
     public EnemyState state;

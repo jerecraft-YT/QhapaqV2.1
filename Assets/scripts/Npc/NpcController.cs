@@ -11,7 +11,6 @@ public class NpcController : MonoBehaviour
     public GameObject cuadroDeTexto;
     public TMP_Text textoDialogo;
 
-    // Update is called once per frame
     void Update()
     {
         Vector3 myPos = transform.position;
