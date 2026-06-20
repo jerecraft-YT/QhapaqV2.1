@@ -38,10 +38,13 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float cooldownAttack = 0.5f;
     private float timeCooldownAttack;
 
+    private void Start()
+    {
+        targetEnemy = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
     private void Update()
     {
-
-
         EnemyStateController();
     }
 

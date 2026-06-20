@@ -526,7 +526,7 @@ Camera:
     x: 0
     y: 0
     width: 1
-    height: 1
+    height: 0.9995192
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -754,10 +754,10 @@ PrefabInstance:
     - target: {fileID: 5280315687712715447, guid: cb73426fdd215c24bab6442ff68f7c96, type: 3}
       propertyPath: targetEnemy
       value: 
-      objectReference: {fileID: 1970139903}
+      objectReference: {fileID: 0}
     - target: {fileID: 5280315687712715447, guid: cb73426fdd215c24bab6442ff68f7c96, type: 3}
       propertyPath: distanceForMove
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6690427140890598363, guid: cb73426fdd215c24bab6442ff68f7c96, type: 3}
       propertyPath: m_FlipX
@@ -1495,7 +1495,7 @@ Tilemap:
       - {fileID: -7409794634972207052, guid: c42c9cf6e4e229d448ab8e7e90e1f8e0, type: 3}
       - {fileID: 3831868327308889023, guid: c42c9cf6e4e229d448ab8e7e90e1f8e0, type: 3}
       - {fileID: -6931261368397936387, guid: c42c9cf6e4e229d448ab8e7e90e1f8e0, type: 3}
-      m_AnimationSpeed: 12.877089
+      m_AnimationSpeed: 10.734414
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -14, y: 7, z: 0}
@@ -1508,7 +1508,7 @@ Tilemap:
       - {fileID: -7409794634972207052, guid: c42c9cf6e4e229d448ab8e7e90e1f8e0, type: 3}
       - {fileID: 3831868327308889023, guid: c42c9cf6e4e229d448ab8e7e90e1f8e0, type: 3}
       - {fileID: -6931261368397936387, guid: c42c9cf6e4e229d448ab8e7e90e1f8e0, type: 3}
-      m_AnimationSpeed: 13.4634695
+      m_AnimationSpeed: 11.504271
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 1, y: 7, z: 0}
@@ -1521,7 +1521,7 @@ Tilemap:
       - {fileID: -7409794634972207052, guid: c42c9cf6e4e229d448ab8e7e90e1f8e0, type: 3}
       - {fileID: 3831868327308889023, guid: c42c9cf6e4e229d448ab8e7e90e1f8e0, type: 3}
       - {fileID: -6931261368397936387, guid: c42c9cf6e4e229d448ab8e7e90e1f8e0, type: 3}
-      m_AnimationSpeed: 12.443572
+      m_AnimationSpeed: 12.083309
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 5, y: 7, z: 0}
@@ -1534,7 +1534,7 @@ Tilemap:
       - {fileID: -7409794634972207052, guid: c42c9cf6e4e229d448ab8e7e90e1f8e0, type: 3}
       - {fileID: 3831868327308889023, guid: c42c9cf6e4e229d448ab8e7e90e1f8e0, type: 3}
       - {fileID: -6931261368397936387, guid: c42c9cf6e4e229d448ab8e7e90e1f8e0, type: 3}
-      m_AnimationSpeed: 11.508583
+      m_AnimationSpeed: 11.991032
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -1845,10 +1845,10 @@ PrefabInstance:
     - target: {fileID: 5280315687712715447, guid: cb73426fdd215c24bab6442ff68f7c96, type: 3}
       propertyPath: targetEnemy
       value: 
-      objectReference: {fileID: 1970139903}
+      objectReference: {fileID: 0}
     - target: {fileID: 5280315687712715447, guid: cb73426fdd215c24bab6442ff68f7c96, type: 3}
       propertyPath: distanceForMove
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8053733778598811613, guid: cb73426fdd215c24bab6442ff68f7c96, type: 3}
       propertyPath: m_Name
@@ -1910,10 +1910,10 @@ PrefabInstance:
     - target: {fileID: 5280315687712715447, guid: cb73426fdd215c24bab6442ff68f7c96, type: 3}
       propertyPath: targetEnemy
       value: 
-      objectReference: {fileID: 1970139903}
+      objectReference: {fileID: 0}
     - target: {fileID: 5280315687712715447, guid: cb73426fdd215c24bab6442ff68f7c96, type: 3}
       propertyPath: distanceForMove
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6690427140890598363, guid: cb73426fdd215c24bab6442ff68f7c96, type: 3}
       propertyPath: m_FlipX
@@ -13361,10 +13361,10 @@ PrefabInstance:
     - target: {fileID: 5280315687712715447, guid: cb73426fdd215c24bab6442ff68f7c96, type: 3}
       propertyPath: targetEnemy
       value: 
-      objectReference: {fileID: 1970139903}
+      objectReference: {fileID: 0}
     - target: {fileID: 5280315687712715447, guid: cb73426fdd215c24bab6442ff68f7c96, type: 3}
       propertyPath: distanceForMove
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6690427140890598363, guid: cb73426fdd215c24bab6442ff68f7c96, type: 3}
       propertyPath: m_FlipX
@@ -13724,10 +13724,10 @@ PrefabInstance:
     - target: {fileID: 5280315687712715447, guid: cb73426fdd215c24bab6442ff68f7c96, type: 3}
       propertyPath: targetEnemy
       value: 
-      objectReference: {fileID: 1970139903}
+      objectReference: {fileID: 0}
     - target: {fileID: 5280315687712715447, guid: cb73426fdd215c24bab6442ff68f7c96, type: 3}
       propertyPath: distanceForMove
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8053733778598811613, guid: cb73426fdd215c24bab6442ff68f7c96, type: 3}
       propertyPath: m_Name
