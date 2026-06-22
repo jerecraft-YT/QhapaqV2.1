@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     private float timeCooldownDash;
     private float timeDuracionDash;
     public GameObject flechaPrefab;
-    void Update()
+    void FixedUpdate()
     {
         MovePlayer(input.direccionMovimiento.x, input.direccionMovimiento.y);
         DashPlayer();
