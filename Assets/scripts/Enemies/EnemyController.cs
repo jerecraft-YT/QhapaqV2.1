@@ -16,9 +16,7 @@ public class EnemyController : MonoBehaviour
         Patrol
     }
 
-    //se que por como esta programado el enemigo puede atravesar paredes pero pidieron simple :P
-
-    public Transform targetEnemy;
+    private Transform targetEnemy;
 
     public EnemyState state;
 
@@ -40,10 +38,13 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float cooldownAttack = 0.5f;
     private float timeCooldownAttack;
 
+    private void Start()
+    {
+        targetEnemy = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
     private void Update()
     {
-
-
         EnemyStateController();
     }
 

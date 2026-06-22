@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //estoy usando ([SerializeField] private) porque estas variables solo las usaremos aqui
-    //pero como quiero que se vea desde el inspector le ponemos [SerializeField] y ya
     [SerializeField] private Playerinput input;
     [SerializeField] private SpriteRenderer burbujaDialogo;
     public bool puedeDialogar = false;
@@ -106,10 +104,11 @@ public class PlayerController : MonoBehaviour
         if (input.presionoBotonAtacar == true)
         {
             //le pasamos a la funcion la posicion actual del mouse
-            CrearFlecha(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            Vector3 MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            CrearFlecha(MousePos);
         }
     }
-    //esta funcion sirve para crear el proyectil en la escena
     private void CrearFlecha(Vector3 MousePos)
     {
         print("atacar");
