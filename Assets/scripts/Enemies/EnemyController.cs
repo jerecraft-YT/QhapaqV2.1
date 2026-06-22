@@ -16,7 +16,7 @@ public class EnemyController : MonoBehaviour
         Patrol
     }
 
-    public Transform targetEnemy;
+    private Transform targetEnemy;
 
     public EnemyState state;
 

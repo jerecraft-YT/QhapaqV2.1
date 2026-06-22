@@ -524,9 +524,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0
-    width: 1
-    height: 0.9995192
+    y: 0.115384616
+    width: 0.69264066
+    height: 0.6923077
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -1495,7 +1495,7 @@ Tilemap:
       - {fileID: -7409794634972207052, guid: c42c9cf6e4e229d448ab8e7e90e1f8e0, type: 3}
       - {fileID: 3831868327308889023, guid: c42c9cf6e4e229d448ab8e7e90e1f8e0, type: 3}
       - {fileID: -6931261368397936387, guid: c42c9cf6e4e229d448ab8e7e90e1f8e0, type: 3}
-      m_AnimationSpeed: 10.734414
+      m_AnimationSpeed: 11.812466
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -14, y: 7, z: 0}
@@ -1508,7 +1508,7 @@ Tilemap:
       - {fileID: -7409794634972207052, guid: c42c9cf6e4e229d448ab8e7e90e1f8e0, type: 3}
       - {fileID: 3831868327308889023, guid: c42c9cf6e4e229d448ab8e7e90e1f8e0, type: 3}
       - {fileID: -6931261368397936387, guid: c42c9cf6e4e229d448ab8e7e90e1f8e0, type: 3}
-      m_AnimationSpeed: 11.504271
+      m_AnimationSpeed: 12.635287
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 1, y: 7, z: 0}
@@ -1521,7 +1521,7 @@ Tilemap:
       - {fileID: -7409794634972207052, guid: c42c9cf6e4e229d448ab8e7e90e1f8e0, type: 3}
       - {fileID: 3831868327308889023, guid: c42c9cf6e4e229d448ab8e7e90e1f8e0, type: 3}
       - {fileID: -6931261368397936387, guid: c42c9cf6e4e229d448ab8e7e90e1f8e0, type: 3}
-      m_AnimationSpeed: 12.083309
+      m_AnimationSpeed: 11.137064
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 5, y: 7, z: 0}
@@ -1534,7 +1534,7 @@ Tilemap:
       - {fileID: -7409794634972207052, guid: c42c9cf6e4e229d448ab8e7e90e1f8e0, type: 3}
       - {fileID: 3831868327308889023, guid: c42c9cf6e4e229d448ab8e7e90e1f8e0, type: 3}
       - {fileID: -6931261368397936387, guid: c42c9cf6e4e229d448ab8e7e90e1f8e0, type: 3}
-      m_AnimationSpeed: 11.991032
+      m_AnimationSpeed: 10.792785
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -16345,7 +16345,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5093030171104190677, guid: 18080ed6bb254c345a6a8ae150b6ea3c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
