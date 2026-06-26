@@ -1,19 +1,25 @@
 fileFormatVersion: 2
-guid: 59fc3843696fd11498ba7ef06839c583
+guid: efdaf5f43dd2703419da197073221962
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6665356834582444394
-    second: New Piskel (9)_0
+      213: -8613559715823262462
+    second: atacar_0
   - first:
-      213: -1496058259235209497
-    second: New Piskel (9)_1
+      213: 1002754365004991288
+    second: atacar_1
   - first:
-      213: -960967852183714187
-    second: New Piskel (9)_2
+      213: 8130590372247927645
+    second: atacar_2
   - first:
-      213: 4244660540284774351
-    second: New Piskel (9)_3
+      213: -2398130990163091060
+    second: atacar_3
+  - first:
+      213: -4792958495578855164
+    second: atacar_4
+  - first:
+      213: -5679586611978779838
+    second: atacar_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +52,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -60,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -84,7 +90,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -109,89 +115,133 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: New Piskel (9)_0
+      name: atacar_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 25
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 696cd750645ef73a0800000000000000
-      internalID: -6665356834582444394
+      spriteID: 2056db6331d767880800000000000000
+      internalID: -8613559715823262462
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (9)_1
+      name: atacar_1
       rect:
         serializedVersion: 2
-        x: 33
+        x: 32
         y: 0
-        width: 24
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7eefefe80feec3be0800000000000000
-      internalID: -1496058259235209497
+      spriteID: 83b481b38cf7aed00800000000000000
+      internalID: 1002754365004991288
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (9)_2
+      name: atacar_2
       rect:
         serializedVersion: 2
-        x: 70
+        x: 64
         y: 0
-        width: 20
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 576050274d4f9a2f0800000000000000
-      internalID: -960967852183714187
+      spriteID: d5b7c08add8a5d070800000000000000
+      internalID: 8130590372247927645
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (9)_3
+      name: atacar_3
       rect:
         serializedVersion: 2
-        x: 102
+        x: 96
         y: 0
-        width: 20
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fc7aacfa54018ea30800000000000000
-      internalID: 4244660540284774351
+      spriteID: c81297ef19028bed0800000000000000
+      internalID: -2398130990163091060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atacar_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 409e4d774adfb7db0800000000000000
+      internalID: -4792958495578855164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atacar_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 243c0f1711e0e21b0800000000000000
+      internalID: -5679586611978779838
       vertices: []
       indices: 
       edges: []
@@ -200,7 +250,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 939622079fd28f746baff7f446126091
     internalID: 0
     vertices: []
     indices: 
@@ -208,12 +258,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      New Piskel (9)_0: -6665356834582444394
-      New Piskel (9)_1: -1496058259235209497
-      New Piskel (9)_2: -960967852183714187
-      New Piskel (9)_3: 4244660540284774351
+      atacar_0: -8613559715823262462
+      atacar_1: 1002754365004991288
+      atacar_2: 8130590372247927645
+      atacar_3: -2398130990163091060
+      atacar_4: -4792958495578855164
+      atacar_5: -5679586611978779838
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

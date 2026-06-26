@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     private float timeCooldownDash;
     private float timeDuracionDash;
     public GameObject flechaPrefab;
+
+    public bool estaMoviendose;
+
     void FixedUpdate()
     {
         MovePlayer(input.direccionMovimiento.x, input.direccionMovimiento.y);
@@ -41,11 +44,18 @@ public class PlayerController : MonoBehaviour
     //esta funcion sirve para mover al jugador y le pasamos las direcciones del script de input
     private void MovePlayer(float direccionMovimientoX,float direccionMovimientoY)
     {
+        estaMoviendose = false;
+
         //si esta haciendo dash no dejaremos que te muevas por tu cuenta
         if (haciendoDash == false)
         {
             //mueve al jugador
             Vector3 direccion = new Vector3(direccionMovimientoX, direccionMovimientoY, 0.0f);
+
+            if (direccion != Vector3.zero)
+            {
+                estaMoviendose = true;
+            }
 
             transform.position += direccion * speed * Time.deltaTime;
         }
