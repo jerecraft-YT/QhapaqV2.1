@@ -232,9 +232,7 @@ TextureImporter:
       outline: []
       physicsShape:
       - - {x: -8, y: -8}
-        - {x: -3, y: -8}
-        - {x: -3, y: 3}
-        - {x: 8, y: 3}
+        - {x: 8, y: -8}
         - {x: 8, y: 8}
         - {x: -8, y: 8}
       tessellationDetail: 0
@@ -259,8 +257,8 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape:
-      - - {x: -8, y: 3}
-        - {x: 8, y: 3}
+      - - {x: -8, y: -8}
+        - {x: 8, y: -8}
         - {x: 8, y: 8}
         - {x: -8, y: 8}
       tessellationDetail: 0
@@ -285,9 +283,7 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape:
-      - - {x: -8, y: 3}
-        - {x: 3, y: 3}
-        - {x: 3, y: -8}
+      - - {x: -8, y: -8}
         - {x: 8, y: -8}
         - {x: 8, y: 8}
         - {x: -8, y: 8}
@@ -402,8 +398,8 @@ TextureImporter:
       outline: []
       physicsShape:
       - - {x: -8, y: -8}
-        - {x: -3, y: -8}
-        - {x: -3, y: 8}
+        - {x: 8, y: -8}
+        - {x: 8, y: 8}
         - {x: -8, y: 8}
       tessellationDetail: 0
       bones: []
@@ -426,7 +422,11 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -8, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: 8}
+        - {x: -8, y: 8}
       tessellationDetail: 0
       bones: []
       spriteID: dc759b8aaf95492438fb567a5647387d
@@ -449,10 +449,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape:
-      - - {x: 3, y: -8}
+      - - {x: -8, y: -8}
         - {x: 8, y: -8}
         - {x: 8, y: 8}
-        - {x: 3, y: 8}
+        - {x: -8, y: 8}
       tessellationDetail: 0
       bones: []
       spriteID: 02f1e944223da824f81e46da1cb33483
@@ -543,9 +543,7 @@ TextureImporter:
       physicsShape:
       - - {x: -8, y: -8}
         - {x: 8, y: -8}
-        - {x: 8, y: -3}
-        - {x: -3, y: -3}
-        - {x: -3, y: 8}
+        - {x: 8, y: 8}
         - {x: -8, y: 8}
       tessellationDetail: 0
       bones: []
@@ -571,8 +569,8 @@ TextureImporter:
       physicsShape:
       - - {x: -8, y: -8}
         - {x: 8, y: -8}
-        - {x: 8, y: -3}
-        - {x: -8, y: -3}
+        - {x: 8, y: 8}
+        - {x: -8, y: 8}
       tessellationDetail: 0
       bones: []
       spriteID: 7a37c139587d9b949b4ebddb8773f78b
@@ -598,9 +596,7 @@ TextureImporter:
       - - {x: -8, y: -8}
         - {x: 8, y: -8}
         - {x: 8, y: 8}
-        - {x: 3, y: 8}
-        - {x: 3, y: -3}
-        - {x: -8, y: -3}
+        - {x: -8, y: 8}
       tessellationDetail: 0
       bones: []
       spriteID: a2656128ef41d4041b6db37e0d4c4d2c
@@ -2311,10 +2307,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape:
-      - - {x: 3, y: 3}
-        - {x: 8, y: 3}
+      - - {x: -8, y: -8}
+        - {x: 8, y: -8}
         - {x: 8, y: 8}
-        - {x: 3, y: 8}
+        - {x: -8, y: 8}
       tessellationDetail: 0
       bones: []
       spriteID: bce5d7cc94efe9f4a813623db56d5ea0
@@ -2337,9 +2333,9 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape:
-      - - {x: -8, y: 3}
-        - {x: -3, y: 3}
-        - {x: -3, y: 8}
+      - - {x: -8, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: 8}
         - {x: -8, y: 8}
       tessellationDetail: 0
       bones: []
@@ -2363,10 +2359,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape:
-      - - {x: 3, y: -8}
+      - - {x: -8, y: -8}
         - {x: 8, y: -8}
-        - {x: 8, y: -3}
-        - {x: 3, y: -3}
+        - {x: 8, y: 8}
+        - {x: -8, y: 8}
       tessellationDetail: 0
       bones: []
       spriteID: 25677c71bf324ae4c8828ba51ffe64b3
@@ -2390,9 +2386,9 @@ TextureImporter:
       outline: []
       physicsShape:
       - - {x: -8, y: -8}
-        - {x: -3, y: -8}
-        - {x: -3, y: -3}
-        - {x: -8, y: -3}
+        - {x: 8, y: -8}
+        - {x: 8, y: 8}
+        - {x: -8, y: 8}
       tessellationDetail: 0
       bones: []
       spriteID: 4958a97951ba9c240b6c232a831be6c7

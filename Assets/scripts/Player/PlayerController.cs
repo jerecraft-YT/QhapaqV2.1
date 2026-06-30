@@ -3,10 +3,15 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Playerinput input;
+    [SerializeField] private HudController hudController;
+    public int vidaJugador = 3;
+    public int dashDisponibles = 0;
+    public bool llaveObtenida;
+    [SerializeField] private float cooldownRecibirDaño = 1.0f;
     [SerializeField] private SpriteRenderer burbujaDialogo;
     public bool puedeDialogar = false;
     [SerializeField] private float speed = 4.0f;
-
+    [SerializeField] private float cooldownDispararFlecha = 0.1f;
     [SerializeField] private float dashSpeed = 10.0f;
     [SerializeField] private float cooldownDash = 0.2f;
     [SerializeField] private float duracionDash = 0.5f;
@@ -16,6 +21,11 @@ public class PlayerController : MonoBehaviour
     private float timeCooldownDash;
     private float timeDuracionDash;
     public GameObject flechaPrefab;
+    private float timeCooldownFlecha;
+    private float timeCooldownRecibirDaño;
+
+    public bool EspadaOArcoEquipado = true;
+    public bool poderCambiarArma = true;
 
     public bool estaMoviendose;
 
@@ -27,6 +37,53 @@ public class PlayerController : MonoBehaviour
 
         //esto es aparte del movimiento
         ControlDialogo();
+        CambiarArma();
+        LiveController();
+        HudController();
+    }
+
+    private void HudController()
+    {
+        hudController.vida = vidaJugador;
+        hudController.espadaOArcoSeleccionado = EspadaOArcoEquipado;
+        hudController.dashDisponibles = dashDisponibles;
+        hudController.llaveObtenida = llaveObtenida;
+    }
+
+    private void LiveController()
+    {
+        timeCooldownRecibirDaño -= Time.deltaTime;
+
+        if (timeCooldownRecibirDaño > 0)
+        {
+
+        }
+    }
+
+    public void QuitarVida()
+    {
+        if (timeCooldownRecibirDaño < 0)
+        {
+            timeCooldownRecibirDaño = cooldownRecibirDaño;
+            vidaJugador -= 1;
+        }
+
+    }
+
+    private void CambiarArma()
+    {
+        if (input.presionoBotonCambiarArma == true )
+        {
+            if (poderCambiarArma == true)
+            {
+                EspadaOArcoEquipado = !EspadaOArcoEquipado;
+                poderCambiarArma = false;
+            }
+        }
+        else
+        {
+            poderCambiarArma = true;
+        }
     }
 
     private void ControlDialogo()
@@ -111,8 +168,12 @@ public class PlayerController : MonoBehaviour
 
     private void ShotPlayer()
     {
-        if (input.presionoBotonAtacar == true)
+        timeCooldownFlecha -= Time.deltaTime;
+
+        if (input.presionoBotonAtacar == true && timeCooldownFlecha < 0.0f)
         {
+            timeCooldownFlecha = cooldownDispararFlecha;
+
             //le pasamos a la funcion la posicion actual del mouse
             Vector3 MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -121,7 +182,7 @@ public class PlayerController : MonoBehaviour
     }
     private void CrearFlecha(Vector3 MousePos)
     {
-        print("atacar");
+        print("atacar flecha");
 
         Vector3 playerPosition = transform.position; 
 
@@ -133,6 +194,11 @@ public class PlayerController : MonoBehaviour
         GameObject flecha = Instantiate(flechaPrefab, playerPosition, Quaternion.identity);
 
         flecha.transform.up = direction;
+    }
+
+    private void CrearAtaqueEspada(Vector3 MousePos)
+    {
+
     }
 
     public void ObtenerItem(string item)

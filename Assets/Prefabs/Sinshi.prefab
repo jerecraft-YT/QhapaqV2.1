@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7548667408748254042}
   - component: {fileID: 5341343360518072046}
   - component: {fileID: 1093724111168611171}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sinshi
   m_TagString: Player
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -115,10 +115,12 @@ MonoBehaviour:
   burbujaDialogo: {fileID: 460510308282896958}
   puedeDialogar: 0
   speed: 6
+  cooldownDispararFlecha: 0.2
   dashSpeed: 20
   cooldownDash: 0.4
   duracionDash: 0.15
   flechaPrefab: {fileID: 1501233223391490296, guid: 25bec5c459f294748af3f1aa45a8fd0c, type: 3}
+  estaMoviendose: 0
 --- !u!114 &5165755639603004254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,6 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimations
   Animator: {fileID: 5341343360518072046}
+  Controller: {fileID: 5134338491480677207}
 --- !u!1 &4868265048780611308
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,7 +245,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3219811089839297301}
   - component: {fileID: 4820633133050773765}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sombra
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333,7 +336,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2840773782227094516}
   - component: {fileID: 460510308282896958}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: burbujaDialogo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
