@@ -46,5 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   enemigo: {fileID: 8053733778598811613, guid: be5c7547721add145a7af0783dca73ef, type: 3}
   timeToSpawn: 3
-  radius: 1
+  radius: 2.5
   numeroEnemigosRonda: 5
