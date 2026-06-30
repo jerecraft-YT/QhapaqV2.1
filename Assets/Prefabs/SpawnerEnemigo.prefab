@@ -39,7 +39,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1623468045489548329}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 077f9ea4577a47f41a329fd18bb84ea9, type: 3}
   m_Name: 
@@ -47,5 +47,4 @@ MonoBehaviour:
   enemigo: {fileID: 8053733778598811613, guid: be5c7547721add145a7af0783dca73ef, type: 3}
   timeToSpawn: 3
   radius: 1
-  Target: {fileID: 0}
   numeroEnemigosRonda: 5
