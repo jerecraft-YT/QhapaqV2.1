@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class objetoInteractuable : MonoBehaviour
 {
-    public PlayerController player;
+    private PlayerController player;
     public float timeToRespawn = 2.0f;
     public float distanceToInteract = 4.0f;
     private float timeRespawn;
@@ -14,11 +14,21 @@ public class objetoInteractuable : MonoBehaviour
     private void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (player.transform.position.y > transform.position.y)
+        {
+            sprite.sortingOrder = 1;
+        }
+        else
+        {
+            sprite.sortingOrder = -1;
+        }
 
         if (!interactuable)
         {
