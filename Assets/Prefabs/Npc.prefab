@@ -104,9 +104,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646aa908a3107c142857e7fc45db2c63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  nombreNpc: pedrito
-  dialogoNpc: si funciono la vaina
-  player: {fileID: 0}
+  nombresNpc:
+  - Qhari
+  - Qhari
+  - Sinshi
+  dialogosNpc:
+  - "Hola querido aventurero me llamo Qhari, no s\xE9 si esto ser\xE1 le\xEDdo por
+    otro Tikray, bueno que se haya arriesgado a salir a la superficie"
+  - "Y como no hay suficiente informaci\xF3n en el pueblo he decidido hacer peque\xF1as
+    notas por todo mi recorrido, espero que sirva de ayuda"
+  - "Pues los ancianos del pueblo solo cuentan historias de la superficie pero nunca
+    del recorrido por la mazmorra, as\xED que me viene bien una gu\xEDa"
+  actualDialogView: 0
   distanceToInteract: 1
   quiereDialogar: 1
   cuadroDeTexto: {fileID: 0}
