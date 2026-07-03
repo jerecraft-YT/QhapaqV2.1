@@ -16,11 +16,14 @@ public class EnemyController : MonoBehaviour
         Patrol
     }
 
-    private Transform targetEnemy;
+    private PlayerController playerController;
 
     public EnemyState state;
 
+    [SerializeField] private SpriteRenderer spriteEnemy;
+
     [SerializeField] private float enemySpeed = 2.0f;
+    public float vidaEnemigo = 10;
 
     [SerializeField] private float distanceForAttack = 1f;
     [SerializeField] private float distanceForMove = 5.0f;
@@ -34,24 +37,78 @@ public class EnemyController : MonoBehaviour
     private Vector3 patrolPoint;
     private float timePatrol;
 
+    private float TimeHit;
+
     //cosas para el ataque
     [SerializeField] private float cooldownAttack = 0.5f;
     private float timeCooldownAttack;
 
     private void Start()
     {
-        targetEnemy = GameObject.FindGameObjectWithTag("Player").transform;
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     private void Update()
     {
         EnemyStateController();
+        SpriteController();
+        LiveController();
+    }
+
+    private void LiveController()
+    {
+        if (vidaEnemigo <= 0)
+        {
+            Destroy(gameObject);
+        }
+
+        if (TimeHit > 0)
+        {
+            spriteEnemy.color = Color.red;
+        }
+        else
+        {
+            spriteEnemy.color = Color.white;
+        }
+
+        TimeHit -= Time.deltaTime;
+    }
+
+    private void SpriteController()
+    {
+        if (playerController.transform.position.y > transform.position.y)
+        {
+            spriteEnemy.sortingOrder = 1;
+        }
+        else
+        {
+            spriteEnemy.sortingOrder = -1;
+        }
+
+        if (state == EnemyState.Chase || state == EnemyState.Attack)
+        {
+            if (playerController.transform.position.x > transform.position.x)
+            {
+                spriteEnemy.flipX = false;
+            }
+            else
+            {
+                spriteEnemy.flipX = true;
+            }
+        }
+
+
+    }
+
+    public void EnemigoGolpeado()
+    {
+        TimeHit = 0.1f;
     }
 
     private void EnemyStateController()
     {   
         //si no se establecio un target entonces salimos de la funcion para no tener errores
-        if (targetEnemy == null)
+        if (playerController == null)
         {
             return;
         }
@@ -86,7 +143,7 @@ public class EnemyController : MonoBehaviour
     private void EnemyIdle()
     {
         //control para que pueda salir de ese estado de quieto
-        Vector3 target = targetEnemy.position;
+        Vector3 target = playerController.transform.position;
         Vector3 myPos = transform.position;
 
         float distance = Vector3.Distance(myPos, target);
@@ -114,7 +171,7 @@ public class EnemyController : MonoBehaviour
     private void EnemyChase()
     {
         //control para que pueda salir de ese estado de persiguiendo
-        Vector3 target = targetEnemy.position;
+        Vector3 target = playerController.transform.position;
         Vector3 myPos = transform.position;
 
         float distance = Vector3.Distance(myPos, target);
@@ -140,7 +197,7 @@ public class EnemyController : MonoBehaviour
     private void EnemyAttack()
     {
         //control para que pueda salir de ese estado de atacando
-        Vector3 target = targetEnemy.position;
+        Vector3 target = playerController.transform.position;
         Vector3 myPos = transform.position;
 
         float distance = Vector3.Distance(myPos, target);
@@ -157,6 +214,7 @@ public class EnemyController : MonoBehaviour
 
         if (timeCooldownAttack > cooldownAttack)
         {
+            playerController.QuitarVida();
             print("te atacaron");
             timeCooldownAttack = 0.0f;
         }
@@ -169,7 +227,7 @@ public class EnemyController : MonoBehaviour
 
         float distance = Vector3.Distance(myPos, patrolPoint);
 
-        Vector3 target = targetEnemy.position;
+        Vector3 target = playerController.transform.position;
 
         float toPlayerDistance = Vector3.Distance(myPos, target);
 

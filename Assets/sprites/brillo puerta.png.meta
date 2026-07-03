@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 91a019b32c681b74b9808a3e547c093e
+guid: 2357876689fedfa4c9e5de9042048ea1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2057516106615078274
-    second: sprite_1_0
+      213: -7015145753245245867
+    second: brillo puerta_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sprite_1_0
+      name: brillo puerta_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 3
-        width: 30
-        height: 26
+        x: 0
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 28dbf6e6ff3cd8c10800000000000000
-      internalID: 2057516106615078274
+      spriteID: 55e1a32fa1235ae90800000000000000
+      internalID: -7015145753245245867
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 313477adc8edbc74cadd05d549fc69bd
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      sprite_1_0: 2057516106615078274
+      brillo puerta_0: -7015145753245245867
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -4,6 +4,7 @@ public class Playerinput : MonoBehaviour
 {
     public bool presionoBotonDash;
     public bool presionoBotonAtacar;
+    public bool presionoBotonCambiarArma;
 
     public Vector2 direccionMovimiento;
     
@@ -21,7 +22,8 @@ public class Playerinput : MonoBehaviour
 
     private void DetectarBotones()
     {
-        presionoBotonDash = Input.GetKey(KeyCode.LeftControl);
-        presionoBotonAtacar = Input.GetMouseButtonDown(0);
+        presionoBotonDash = Input.GetKey(KeyCode.LeftShift);
+        presionoBotonAtacar = Input.GetMouseButton(0);
+        presionoBotonCambiarArma = Input.GetKey(KeyCode.Tab);
     }
 }

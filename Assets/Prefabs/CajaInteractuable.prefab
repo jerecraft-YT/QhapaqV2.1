@@ -81,7 +81,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1237201183
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_MaskInteraction: 0
   m_Sprite: {fileID: -674808114879304649, guid: 9c4978ffe843ef042bd238bea260cd48, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   player: {fileID: 0}
   timeToRespawn: 2
-  distanceToInteract: 1
+  distanceToInteract: 1.5
   contenidoCaja: 0
 --- !u!61 &5676576167090772332
 BoxCollider2D:
