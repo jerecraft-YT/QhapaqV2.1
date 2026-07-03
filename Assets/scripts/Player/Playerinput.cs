@@ -22,7 +22,7 @@ public class Playerinput : MonoBehaviour
 
     private void DetectarBotones()
     {
-        presionoBotonDash = Input.GetKey(KeyCode.LeftControl);
+        presionoBotonDash = Input.GetKey(KeyCode.LeftShift);
         presionoBotonAtacar = Input.GetMouseButton(0);
         presionoBotonCambiarArma = Input.GetKey(KeyCode.Tab);
     }
