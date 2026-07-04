@@ -4,6 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Playerinput input;
     [SerializeField] private HudController hudController;
+    [SerializeField] private Transform attackReference;
     public int vidaJugador = 3;
     public int dashDisponibles = 0;
     public bool llaveObtenida;
@@ -11,23 +12,33 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpriteRenderer burbujaDialogo;
     public bool puedeDialogar = false;
     [SerializeField] private float speed = 4.0f;
-    [SerializeField] private float cooldownDispararFlecha = 0.1f;
+    [SerializeField] private float cooldownAtacar = 0.1f;
     [SerializeField] private float dashSpeed = 10.0f;
     [SerializeField] private float cooldownDash = 0.2f;
     [SerializeField] private float duracionDash = 0.5f;
+    [SerializeField] private float recuperacionDash = 2.5f;
+    public int flechasDisponibles = 0;
     //ponemos una direccion por defecto
     private Vector3 ultimaDireccion = Vector2.right;
     private bool haciendoDash;
     private float timeCooldownDash;
     private float timeDuracionDash;
     public GameObject flechaPrefab;
-    private float timeCooldownFlecha;
+    public GameObject espadaPrefab;
+    public GameObject slashEspadaPrefab;
+    private float timeCooldownAtacar;
     private float timeCooldownRecibirDaño;
+    private float timeRecuperacionDash;
 
     public bool EspadaOArcoEquipado = true;
     public bool poderCambiarArma = true;
 
     public bool estaMoviendose;
+
+    private void Start()
+    {
+        timeRecuperacionDash = recuperacionDash;
+    }
 
     void FixedUpdate()
     {
@@ -40,6 +51,22 @@ public class PlayerController : MonoBehaviour
         CambiarArma();
         LiveController();
         HudController();
+        RecuperacionDash();
+    }
+
+    private void RecuperacionDash()
+    {
+        timeRecuperacionDash -= Time.deltaTime;
+
+        if (timeRecuperacionDash < 0)
+        {
+            timeRecuperacionDash = recuperacionDash;
+            dashDisponibles++;
+            if (dashDisponibles > 5)
+            {
+                dashDisponibles = 5;
+            }
+        }
     }
 
     private void HudController()
@@ -48,6 +75,7 @@ public class PlayerController : MonoBehaviour
         hudController.espadaOArcoSeleccionado = EspadaOArcoEquipado;
         hudController.dashDisponibles = dashDisponibles;
         hudController.llaveObtenida = llaveObtenida;
+        hudController.numeroFlechas = flechasDisponibles;
     }
 
     private void LiveController()
@@ -72,7 +100,12 @@ public class PlayerController : MonoBehaviour
 
     private void CambiarArma()
     {
-        if (input.presionoBotonCambiarArma == true )
+        if (flechasDisponibles <= 0)
+        {
+            EspadaOArcoEquipado = true;
+        }
+
+        if (input.presionoBotonCambiarArma == true && flechasDisponibles > 0)
         {
             if (poderCambiarArma == true)
             {
@@ -83,6 +116,15 @@ public class PlayerController : MonoBehaviour
         else
         {
             poderCambiarArma = true;
+        }
+
+        if (EspadaOArcoEquipado)
+        {
+            cooldownAtacar = 0.45f;
+        }
+        else
+        {
+            cooldownAtacar = 0.2f;
         }
     }
 
@@ -158,8 +200,11 @@ public class PlayerController : MonoBehaviour
             ultimaDireccion = direccionMovimiento;
         }
 
-        if (presionoBotonDash && timeCooldownDash <= 0)
+        if (presionoBotonDash && timeCooldownDash <= 0 && dashDisponibles > 0)
         {
+            timeRecuperacionDash = recuperacionDash;
+            dashDisponibles--;
+            timeCooldownRecibirDaño = duracionDash + 0.25f;
             haciendoDash = true;
             timeDuracionDash = 0.0f;
             print("Dash");
@@ -168,23 +213,53 @@ public class PlayerController : MonoBehaviour
 
     private void ShotPlayer()
     {
-        timeCooldownFlecha -= Time.deltaTime;
+        timeCooldownAtacar -= Time.deltaTime;
 
-        if (input.presionoBotonAtacar == true && timeCooldownFlecha < 0.0f)
+        if (input.presionoBotonAtacar == true && timeCooldownAtacar < 0.0f)
         {
-            timeCooldownFlecha = cooldownDispararFlecha;
+            timeCooldownAtacar = cooldownAtacar;
 
             //le pasamos a la funcion la posicion actual del mouse
             Vector3 MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            CrearFlecha(MousePos);
+            if (EspadaOArcoEquipado == true)
+            {
+                CrearEspada(MousePos);
+            }
+            else
+            {
+                CrearFlecha(MousePos);
+            }
         }
     }
+
+    private void CrearEspada(Vector3 MousePos)
+    {
+        print("atacar espada");
+
+        Vector3 playerPosition = attackReference.transform.position;
+
+        Vector3 direction = MousePos - playerPosition;
+        direction.z = 0.0f;
+        direction.Normalize();
+
+        //Quaternion identity representa rotacion 0 del objeto osea 0 grados
+        GameObject espada = Instantiate(espadaPrefab, playerPosition, Quaternion.identity);
+
+        espada.transform.up = direction;
+
+        GameObject slash = Instantiate(slashEspadaPrefab, playerPosition, Quaternion.identity);
+        slash.transform.up = direction;
+        Destroy(slash, 0.15f);
+    }
+
     private void CrearFlecha(Vector3 MousePos)
     {
+        flechasDisponibles--;
+
         print("atacar flecha");
 
-        Vector3 playerPosition = transform.position; 
+        Vector3 playerPosition = attackReference.transform.position; 
 
         Vector3 direction = MousePos - playerPosition;
         direction.z = 0.0f;
@@ -196,13 +271,33 @@ public class PlayerController : MonoBehaviour
         flecha.transform.up = direction;
     }
 
-    private void CrearAtaqueEspada(Vector3 MousePos)
-    {
-
-    }
-
-    public void ObtenerItem(string item)
+    public void ObtenerItem(lootCaja item)
     {
         print("obtuviste un/a: " + item);
+
+        switch (item)
+        {
+            case lootCaja.None:
+                break;
+            case lootCaja.RecargaDash:
+                dashDisponibles += 2;
+                if (dashDisponibles > 5)
+                {
+                    dashDisponibles = 5;
+                }
+                break;
+            case lootCaja.Vida:
+                vidaJugador++;
+                if (vidaJugador > 3)
+                {
+                    vidaJugador = 3;
+                }
+                break;
+            case lootCaja.Arco:
+                flechasDisponibles += Random.Range(3,6);
+                break;
+            default:
+                break;
+        }
     }
 }

@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ public class HudController : MonoBehaviour
     [SerializeField] private Image medidorDash;
     [SerializeField] private Image llave;
     [SerializeField] private Sprite[] medidorDashSprite;
+    [SerializeField] private TMP_Text[] numeroFlechasText;
     [SerializeField] private Sprite corazonVivoSprite;
     [SerializeField] private Sprite corazonNoVivoSprite;
     [SerializeField] private Sprite espadaSeleccionadoSprite;
@@ -22,10 +24,11 @@ public class HudController : MonoBehaviour
     public int vida;
     public bool espadaOArcoSeleccionado;
     public bool llaveObtenida;
+    public int numeroFlechas;
 
-    [SerializeField] private int oldDashDisponibles;
-    [SerializeField] private int oldVida;
-    [SerializeField] private bool oldEspadaOArcoSeleccionado;
+    private int oldDashDisponibles = -1;
+    private int oldVida = -1;
+    private bool oldEspadaOArcoSeleccionado;
 
     // Update is called once per frame
     void Update()
@@ -89,6 +92,11 @@ public class HudController : MonoBehaviour
         else
         {
             llave.gameObject.SetActive(false);
+        }
+
+        foreach (var numeroFlecha in numeroFlechasText)
+        {
+            numeroFlecha.text = numeroFlechas.ToString();
         }
     }
 }
