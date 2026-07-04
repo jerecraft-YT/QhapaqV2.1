@@ -4,10 +4,12 @@ public class Espada : MonoBehaviour
 {
     public float timeLive = 0.15f;
     public float dañoEspada = 2.0f;
+    public float range = 1.0f;
     public GameObject efectoHitPrefab;
     private void Start()
     {
         Destroy(gameObject,timeLive);
+        transform.position += transform.up * range;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

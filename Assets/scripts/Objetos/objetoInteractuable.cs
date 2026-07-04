@@ -51,24 +51,8 @@ public class objetoInteractuable : MonoBehaviour
                 interactuable = false;
                 sprite.enabled = false;
                 timeRespawn = 0.0f;
-
-                switch (contenidoCaja)
-                {
-                    case lootCaja.None:
-                        break;
-                    case lootCaja.RecargaDash:
-                        player.ObtenerItem("RecargaDash");
-                        break;
-                    case lootCaja.Vida:
-                        player.ObtenerItem("Vida");
-                        break;
-                    case lootCaja.Arco:
-                        player.ObtenerItem("Arco");
-                        break;
-                    default:
-                        break;
-                }
-
+                player.ObtenerItem(contenidoCaja);
+                Destroy(gameObject);
             }
         }
     }

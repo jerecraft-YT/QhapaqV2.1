@@ -255,14 +255,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   state: 0
   spriteEnemy: {fileID: 6690427140890598363}
-  enemySpeed: 2
-  vidaEnemigo: 10
-  distanceForAttack: 1
+  enemySpeed: 4
+  vidaEnemigo: 15
+  distanceForAttack: 1.4
   distanceForMove: 7
   timeForPatrol: 2
   distanceForPatrol: 2
   distanceForStopPatrol: 0.1
-  cooldownAttack: 0.5
+  cooldownAttack: 0.1
 --- !u!212 &6690427140890598363
 SpriteRenderer:
   serializedVersion: 2
@@ -378,8 +378,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.11964327, y: 0.47813487}
-  m_Radius: 0.6589606
+  m_Offset: {x: -0.009737015, y: 0.50963783}
+  m_Radius: 0.6064609
 --- !u!50 &6023256443156011974
 Rigidbody2D:
   serializedVersion: 5
