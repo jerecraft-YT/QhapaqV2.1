@@ -25,7 +25,7 @@ public class PantallaTituloManager : MonoBehaviour
             if (opacidad.a >= 1.1f && !loadingLevel)
             {
                 loadingLevel = true;
-                SceneManager.LoadScene("Mazmorra1");
+                SceneManager.LoadScene("Tutorial");
             }
 
             opacidad.a += Time.deltaTime;
