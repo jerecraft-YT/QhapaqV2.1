@@ -41,9 +41,13 @@ public class PlayerController : MonoBehaviour
     public float opacidadDeath;
     public float velocidadOpacidadDeath = 2.0f;
 
+    private SpriteRenderer spritePlayer;
+
     private void Start()
     {
         timeRecuperacionDash = recuperacionDash;
+
+        spritePlayer = GetComponent<SpriteRenderer>();
     }
 
     void FixedUpdate()
@@ -194,6 +198,14 @@ public class PlayerController : MonoBehaviour
 
             if (direccion != Vector3.zero)
             {
+                if (direccion.x < 0.0f)
+                {
+                    spritePlayer.flipX = false;
+                }
+                else
+                {
+                    spritePlayer.flipX = true;
+                }
                 estaMoviendose = true;
             }
 
