@@ -20,18 +20,18 @@ public class Flecha : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemigo")
         {
-            QuitarVidaEnemigo(collision);
+            EnemyController enemyController = collision.gameObject.GetComponent<EnemyController>();
 
-            CrearEfecto();
+            QuitarVidaEnemigo(enemyController);
+
+            CrearEfecto(enemyController);
         }
 
         Destroy(gameObject);
     }
 
-    private void QuitarVidaEnemigo(Collision2D collision)
+    private void QuitarVidaEnemigo(EnemyController enemyController)
     {
-        EnemyController enemyController = collision.gameObject.GetComponent<EnemyController>();
-
         enemyController.vidaEnemigo -= dañoFlecha;
 
         enemyController.tiempoQuieto = 0.3f;
@@ -39,11 +39,11 @@ public class Flecha : MonoBehaviour
         enemyController.EnemigoGolpeado();
     }
 
-    private void CrearEfecto()
+    private void CrearEfecto(EnemyController enemyController)
     {
         float randomRotation = Random.Range(0.0f, 360.0f);
 
-        GameObject efectoHit = Instantiate(efectoHitPrefab, transform.position, Quaternion.Euler(0.0f, 0.0f, randomRotation));
+        GameObject efectoHit = Instantiate(efectoHitPrefab, enemyController.transform.position, Quaternion.Euler(0.0f, 0.0f, randomRotation));
         Destroy(efectoHit, 0.2f);
     }
 }

@@ -41,7 +41,7 @@ public class EnemyController : MonoBehaviour
 
     //cosas para el ataque
     [SerializeField] private float cooldownAttack = 0.5f;
-    private float timeCooldownAttack;
+    private float timeCooldownAttack = 1.0f;
 
     public float tiempoQuieto = 0f;
 

@@ -303,7 +303,7 @@ public class PlayerController : MonoBehaviour
 
         GameObject slash = Instantiate(slashEspadaPrefab, playerPosition, Quaternion.identity);
         slash.transform.up = direction;
-        Destroy(slash, 0.15f);
+        Destroy(slash, 0.25f);
     }
 
     private void CrearFlecha(Vector3 MousePos)

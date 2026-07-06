@@ -26,7 +26,7 @@ public class Espada : MonoBehaviour
 
             float randomRotation = Random.Range(0.0f, 360.0f);
 
-            GameObject efectoHit = Instantiate(efectoHitPrefab, transform.position, Quaternion.Euler(0.0f,0.0f,randomRotation));
+            GameObject efectoHit = Instantiate(efectoHitPrefab, enemyController.transform.position, Quaternion.Euler(0.0f,0.0f,randomRotation));
             Destroy(efectoHit, 0.2f);
         }
 
