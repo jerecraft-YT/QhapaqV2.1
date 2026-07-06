@@ -43,6 +43,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float cooldownAttack = 0.5f;
     private float timeCooldownAttack;
 
+    public float tiempoQuieto = 0f;
+
     private void Start()
     {
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
@@ -50,9 +52,16 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        EnemyStateController();
-        SpriteController();
         LiveController();
+        SpriteController();
+
+        if (tiempoQuieto > 0f)
+        {
+            tiempoQuieto -= Time.deltaTime;
+            return;
+        }
+
+        EnemyStateController();
     }
 
     private void LiveController()

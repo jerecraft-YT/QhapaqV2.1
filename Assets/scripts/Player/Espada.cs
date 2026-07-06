@@ -20,6 +20,8 @@ public class Espada : MonoBehaviour
 
             enemyController.vidaEnemigo -= dañoEspada;
 
+            enemyController.tiempoQuieto = 0.35f;
+
             enemyController.EnemigoGolpeado();
 
             float randomRotation = Random.Range(0.0f, 360.0f);

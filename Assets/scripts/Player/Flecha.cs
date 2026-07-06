@@ -34,6 +34,8 @@ public class Flecha : MonoBehaviour
 
         enemyController.vidaEnemigo -= dañoFlecha;
 
+        enemyController.tiempoQuieto = 0.3f;
+
         enemyController.EnemigoGolpeado();
     }
 
