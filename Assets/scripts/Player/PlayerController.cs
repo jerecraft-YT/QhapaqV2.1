@@ -326,7 +326,7 @@ public class PlayerController : MonoBehaviour
             case lootCaja.None:
                 break;
             case lootCaja.RecargaDash:
-                dashDisponibles += 2;
+                dashDisponibles += 3;
                 if (dashDisponibles > 5)
                 {
                     dashDisponibles = 5;
@@ -340,7 +340,7 @@ public class PlayerController : MonoBehaviour
                 }
                 break;
             case lootCaja.Arco:
-                flechasDisponibles += Random.Range(3,6);
+                flechasDisponibles += Random.Range(3,8);
                 break;
             default:
                 break;

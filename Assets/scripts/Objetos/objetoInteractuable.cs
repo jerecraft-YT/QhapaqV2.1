@@ -7,6 +7,8 @@ public class objetoInteractuable : MonoBehaviour
     private SpriteRenderer sprite;
     public lootCaja contenidoCaja;
     private bool puedeInteractuar = false;
+    public GameObject iconoPrefab;
+    public Transform refIcono;
 
     private void Start()
     {
@@ -51,6 +53,14 @@ public class objetoInteractuable : MonoBehaviour
     {
         player.ObtenerItem(contenidoCaja);
         player.puedeDialogar = false;
+
+        GameObject iconoCaja = Instantiate(iconoPrefab, refIcono.position, Quaternion.identity);
+        IconoCaja scriptIcono = iconoCaja.GetComponent<IconoCaja>();
+
+        scriptIcono.contenidoCaja = contenidoCaja;
+
+        Destroy(iconoCaja, 0.25f);
+
         Destroy(gameObject);
     }
 }
