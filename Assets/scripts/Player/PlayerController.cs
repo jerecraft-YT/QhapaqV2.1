@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Playerinput input;
-    [SerializeField] private HudController hudController;
+    public HudController hudController;
     [SerializeField] private Transform attackReference;
     public int vidaJugador = 3;
     public int dashDisponibles = 0;

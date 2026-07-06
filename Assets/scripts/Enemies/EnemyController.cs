@@ -39,6 +39,8 @@ public class EnemyController : MonoBehaviour
 
     private float TimeHit;
 
+    public bool tieneLlave = false;
+
     //cosas para el ataque
     [SerializeField] private float cooldownAttack = 0.5f;
     private float timeCooldownAttack = 1.0f;
@@ -68,6 +70,11 @@ public class EnemyController : MonoBehaviour
     {
         if (vidaEnemigo <= 0)
         {
+            if (tieneLlave)
+            {
+                playerController.llaveObtenida = true;
+            }
+
             Destroy(gameObject);
         }
 
