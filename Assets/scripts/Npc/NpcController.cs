@@ -1,5 +1,4 @@
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class NpcController : MonoBehaviour
@@ -14,9 +13,11 @@ public class NpcController : MonoBehaviour
     public GameObject cuadroDeTexto;
     public TMP_Text textoDialogo;
     public bool dialogando = false;
+    private SpriteRenderer sprite;
 
     private void Start()
     {
+        sprite = GetComponent<SpriteRenderer>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         maxDialogIndex = dialogosNpc.Length;
     }
@@ -24,6 +25,15 @@ public class NpcController : MonoBehaviour
     void Update()
     {
         DialogControl();
+
+        if (player.transform.position.y > transform.position.y)
+        {
+            sprite.sortingOrder = 1;
+        }
+        else
+        {
+            sprite.sortingOrder = -1;
+        }
     }
 
     private void DialogControl()

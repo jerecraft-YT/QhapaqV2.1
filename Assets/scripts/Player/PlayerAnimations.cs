@@ -12,7 +12,14 @@ public class PlayerAnimations : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Animator.SetBool("estaCaminando", Controller.estaMoviendose);
+        if (Controller.enabled == false)
+        {
+            Animator.SetBool("estaCaminando", false);
+        }
+        else
+        {
+            Animator.SetBool("estaCaminando", Controller.estaMoviendose);
+        }
         if (Controller.isDeath && !playerDeath)
         {
             playerDeath = true;
