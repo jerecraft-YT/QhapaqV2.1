@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 57feaebbc0dd42e4bb0c5c294d9aaec6
+guid: c4d8dad1339b45941ac4d1e5e51ecd2b
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -126,12 +126,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-<<<<<<<< Updated upstream:Assets/sprites/Jugador/playeranimation/caminar/sprite_2.png.meta
-    buildTarget: iOS
+    buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -140,30 +139,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-========
->>>>>>>> Stashed changes:Assets/sprites/Jugador/playeranimation/caminar/New Piskel (1).png.meta
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-<<<<<<<< Updated upstream:Assets/sprites/Jugador/playeranimation/caminar/sprite_2.png.meta
     textureCompression: 0
-========
-    textureCompression: 1
->>>>>>>> Stashed changes:Assets/sprites/Jugador/playeranimation/caminar/New Piskel (1).png.meta
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -176,11 +156,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-<<<<<<<< Updated upstream:Assets/sprites/Jugador/playeranimation/caminar/sprite_2.png.meta
     textureCompression: 0
-========
-    textureCompression: 1
->>>>>>>> Stashed changes:Assets/sprites/Jugador/playeranimation/caminar/New Piskel (1).png.meta
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -195,20 +171,20 @@ TextureImporter:
       name: New Piskel (1)_0
       rect:
         serializedVersion: 2
-        x: 6
+        x: 0
         y: 0
-        width: 18
-        height: 28
-      alignment: 9
+        width: 32
+        height: 32
+      alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9249ede64883660a0800000000000000
-      internalID: -6888756438569675735
+      spriteID: 6ebbfca02893fc44595aaac39e2c4c68
+      internalID: 1118937084
       vertices: []
       indices: 
       edges: []
@@ -217,20 +193,20 @@ TextureImporter:
       name: New Piskel (1)_1
       rect:
         serializedVersion: 2
-        x: 36
+        x: 32
         y: 0
-        width: 22
-        height: 27
-      alignment: 9
+        width: 32
+        height: 32
+      alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 29beed572c6005f70800000000000000
-      internalID: 9173839873224666002
+      spriteID: 2cbd64076e0e3d2498bd6956874a1d52
+      internalID: -620913351
       vertices: []
       indices: 
       edges: []
@@ -239,7 +215,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: bfc5f7da42f8ce74b84f162f9468a5ae
+    spriteID: 0092f991955c2a04dae20a647f16a56c
     internalID: 0
     vertices: []
     indices: 
@@ -247,10 +223,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":2.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      New Piskel (1)_0: -6888756438569675735
-      New Piskel (1)_1: 9173839873224666002
+      New Piskel (1)_0: 1118937084
+      New Piskel (1)_1: -620913351
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

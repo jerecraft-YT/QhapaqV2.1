@@ -41,7 +41,9 @@ public class EnemyController : MonoBehaviour
 
     //cosas para el ataque
     [SerializeField] private float cooldownAttack = 0.5f;
-    private float timeCooldownAttack;
+    private float timeCooldownAttack = 1.0f;
+
+    public float tiempoQuieto = 0f;
 
     private void Start()
     {
@@ -50,9 +52,16 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        EnemyStateController();
-        SpriteController();
         LiveController();
+        SpriteController();
+
+        if (tiempoQuieto > 0f)
+        {
+            tiempoQuieto -= Time.deltaTime;
+            return;
+        }
+
+        EnemyStateController();
     }
 
     private void LiveController()

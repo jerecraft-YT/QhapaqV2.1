@@ -41,9 +41,13 @@ public class PlayerController : MonoBehaviour
     public float opacidadDeath;
     public float velocidadOpacidadDeath = 2.0f;
 
+    private SpriteRenderer spritePlayer;
+
     private void Start()
     {
         timeRecuperacionDash = recuperacionDash;
+
+        spritePlayer = GetComponent<SpriteRenderer>();
     }
 
     void FixedUpdate()
@@ -79,8 +83,6 @@ public class PlayerController : MonoBehaviour
             colorOpacidad.a = opacidadDeath;
 
             hudController.transicionMorir.color = colorOpacidad;
-
-
         }
 
         if (timeDeath > 4)
@@ -116,11 +118,6 @@ public class PlayerController : MonoBehaviour
     private void LiveController()
     {
         timeCooldownRecibirDaño -= Time.deltaTime;
-
-        if (timeCooldownRecibirDaño > 0)
-        {
-
-        }
 
         if (vidaJugador <= 0)
         {
@@ -194,6 +191,14 @@ public class PlayerController : MonoBehaviour
 
             if (direccion != Vector3.zero)
             {
+                if (direccion.x < 0.0f)
+                {
+                    spritePlayer.flipX = false;
+                }
+                else
+                {
+                    spritePlayer.flipX = true;
+                }
                 estaMoviendose = true;
             }
 
@@ -291,7 +296,7 @@ public class PlayerController : MonoBehaviour
 
         GameObject slash = Instantiate(slashEspadaPrefab, playerPosition, Quaternion.identity);
         slash.transform.up = direction;
-        Destroy(slash, 0.15f);
+        Destroy(slash, 0.25f);
     }
 
     private void CrearFlecha(Vector3 MousePos)
