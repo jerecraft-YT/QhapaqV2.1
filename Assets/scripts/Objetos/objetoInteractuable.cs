@@ -3,13 +3,10 @@ using UnityEngine;
 public class objetoInteractuable : MonoBehaviour
 {
     private PlayerController player;
-    public float timeToRespawn = 2.0f;
     public float distanceToInteract = 4.0f;
-    private float timeRespawn;
-    private bool interactuable = true;
     private SpriteRenderer sprite;
     public lootCaja contenidoCaja;
-
+    private bool puedeInteractuar = false;
 
     private void Start()
     {
@@ -30,30 +27,30 @@ public class objetoInteractuable : MonoBehaviour
             sprite.sortingOrder = -1;
         }
 
-        if (!interactuable)
-        {
-            if (timeRespawn >= timeToRespawn)
-            {
-                interactuable = true;
-                sprite.enabled = true;
-            }
-
-            timeRespawn += Time.deltaTime;
-            return;
-        }
-
         float distance = Vector3.Distance(transform.position, player.transform.position);
 
         if (distance <= distanceToInteract)
         {
+            player.puedeDialogar = true;
+            puedeInteractuar = true;
+
             if (Input.GetKey(KeyCode.E))
             {
-                interactuable = false;
-                sprite.enabled = false;
-                timeRespawn = 0.0f;
-                player.ObtenerItem(contenidoCaja);
-                Destroy(gameObject);
+                OpenBox();
             }
         }
+
+        else if (distance > distanceToInteract && puedeInteractuar)
+        {
+            puedeInteractuar = false;
+            player.puedeDialogar = false;
+        }
+    }
+
+    public void OpenBox()
+    {
+        player.ObtenerItem(contenidoCaja);
+        player.puedeDialogar = false;
+        Destroy(gameObject);
     }
 }
