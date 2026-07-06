@@ -19,6 +19,8 @@ public class HudController : MonoBehaviour
     [SerializeField] private Sprite espadaNoSeleccionadoSprite;
     [SerializeField] private Sprite arcoSeleccionadoSprite;
     [SerializeField] private Sprite arcoNoSeleccionadoSprite;
+    
+    public Image transicionMorir;
 
     public int dashDisponibles;
     public int vida;

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -35,6 +36,11 @@ public class PlayerController : MonoBehaviour
 
     public bool estaMoviendose;
 
+    public bool isDeath;
+    public float timeDeath;
+    public float opacidadDeath;
+    public float velocidadOpacidadDeath = 2.0f;
+
     private void Start()
     {
         timeRecuperacionDash = recuperacionDash;
@@ -42,6 +48,12 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (isDeath)
+        {
+            DeathController();
+            return;
+        }
+
         MovePlayer(input.direccionMovimiento.x, input.direccionMovimiento.y);
         DashPlayer();
         ShotPlayer();
@@ -52,6 +64,29 @@ public class PlayerController : MonoBehaviour
         LiveController();
         HudController();
         RecuperacionDash();
+    }
+
+    private void DeathController()
+    {
+        timeDeath += Time.deltaTime;
+
+        if (timeDeath > 2)
+        {
+            opacidadDeath += Time.deltaTime * velocidadOpacidadDeath;
+
+            Color colorOpacidad = hudController.transicionMorir.color;
+
+            colorOpacidad.a = opacidadDeath;
+
+            hudController.transicionMorir.color = colorOpacidad;
+
+
+        }
+
+        if (timeDeath > 4)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
     private void RecuperacionDash()
@@ -85,6 +120,12 @@ public class PlayerController : MonoBehaviour
         if (timeCooldownRecibirDaño > 0)
         {
 
+        }
+
+        if (vidaJugador <= 0)
+        {
+            isDeath = true;
+            
         }
     }
 

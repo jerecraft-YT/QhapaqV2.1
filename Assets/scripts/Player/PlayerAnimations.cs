@@ -6,11 +6,17 @@ public class PlayerAnimations : MonoBehaviour
 
     public PlayerController Controller;
 
+    public bool playerDeath = false;
+
 
     // Update is called once per frame
     void Update()
     {
         Animator.SetBool("estaCaminando", Controller.estaMoviendose);
-
+        if (Controller.isDeath && !playerDeath)
+        {
+            playerDeath = true;
+            Animator.SetTrigger("OnDeath");
+        }
     }
 }
