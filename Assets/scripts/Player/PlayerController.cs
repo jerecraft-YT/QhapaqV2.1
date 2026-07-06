@@ -83,8 +83,6 @@ public class PlayerController : MonoBehaviour
             colorOpacidad.a = opacidadDeath;
 
             hudController.transicionMorir.color = colorOpacidad;
-
-
         }
 
         if (timeDeath > 4)
@@ -120,11 +118,6 @@ public class PlayerController : MonoBehaviour
     private void LiveController()
     {
         timeCooldownRecibirDaño -= Time.deltaTime;
-
-        if (timeCooldownRecibirDaño > 0)
-        {
-
-        }
 
         if (vidaJugador <= 0)
         {
