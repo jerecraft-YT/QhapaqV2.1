@@ -38,6 +38,7 @@ public class EnemyController : MonoBehaviour
     private float timePatrol;
 
     private float TimeHit;
+    private bool cambiarColor;
 
     public bool tieneLlave = false;
 
@@ -80,11 +81,17 @@ public class EnemyController : MonoBehaviour
 
         if (TimeHit > 0)
         {
+            cambiarColor = true;
             spriteEnemy.color = Color.red;
         }
         else
         {
-            spriteEnemy.color = Color.white;
+            if (cambiarColor)
+            {
+                spriteEnemy.color = Color.white;
+                cambiarColor = false;
+            }
+
         }
 
         TimeHit -= Time.deltaTime;
