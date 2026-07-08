@@ -121,6 +121,8 @@ public class PlayerController : MonoBehaviour
 
         if (vidaJugador <= 0)
         {
+            spritePlayer.sortingLayerName = "Foreground";
+            spritePlayer.sortingOrder = 100;
             isDeath = true;
             
         }
