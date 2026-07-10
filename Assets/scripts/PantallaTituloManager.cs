@@ -5,13 +5,18 @@ using UnityEngine.UI;
 public class PantallaTituloManager : MonoBehaviour
 {
     public Image transicion;
+    public Image logo;
 
     public bool loadLevel = false;
     public bool loadingLevel = false;
+    public bool canStartGame = false;
+    public float timeStartGame;
 
     // Update is called once per frame
     void Update()
     {
+        if (!canStartGame) return;
+
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
             loadLevel = true;

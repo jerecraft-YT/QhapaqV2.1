@@ -27,6 +27,20 @@ public class Flecha : MonoBehaviour
             CrearEfecto(enemyController);
         }
 
+        if (collision.gameObject.tag == "Caja")
+        {
+            print("detecte caja");
+
+            objetoInteractuable objetoInteractuable = collision.gameObject.GetComponent<objetoInteractuable>();
+
+            objetoInteractuable.OpenBox();
+
+            float randomRotation = Random.Range(0.0f, 360.0f);
+
+            GameObject efectoHit = Instantiate(efectoHitPrefab, objetoInteractuable.transform.position, Quaternion.Euler(0.0f, 0.0f, randomRotation));
+            Destroy(efectoHit, 0.2f);
+        }
+
         Destroy(gameObject);
     }
 
