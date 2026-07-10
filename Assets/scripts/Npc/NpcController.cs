@@ -7,18 +7,22 @@ public class NpcController : MonoBehaviour
     public string[] dialogosNpc = new string[1];
     public int maxDialogIndex;
     public int actualDialogView = 0;
-    private PlayerController player;
+
+    private PlayerDialogController playerDialog;
     public float distanceToInteract;
-    public bool quiereDialogar;
+    public bool jugadorEstaCerca;
+    public bool dialogando = false;
+
     public GameObject cuadroDeTexto;
     public TMP_Text textoDialogo;
-    public bool dialogando = false;
     private SpriteRenderer sprite;
 
     private void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+
+        playerDialog = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerDialogController>();
+
         maxDialogIndex = dialogosNpc.Length;
     }
 
@@ -26,7 +30,12 @@ public class NpcController : MonoBehaviour
     {
         DialogControl();
 
-        if (player.transform.position.y > transform.position.y)
+        ControlOrden();
+    }
+
+    private void ControlOrden()
+    {
+        if (playerDialog.transform.position.y > transform.position.y)
         {
             sprite.sortingOrder = 1;
         }
@@ -39,7 +48,7 @@ public class NpcController : MonoBehaviour
     private void DialogControl()
     {
         Vector3 myPos = transform.position;
-        Vector3 playerPos = player.transform.position;
+        Vector3 playerPos = playerDialog.transform.position;
 
         float distance = Vector3.Distance(myPos, playerPos);
 
@@ -49,39 +58,57 @@ public class NpcController : MonoBehaviour
             {
                 actualDialogView++;
 
+                //detecta el ultimo dialogo
                 if (actualDialogView == maxDialogIndex)
                 {
                     actualDialogView = 0;
-                    player.puedeDialogar = false;
-                    quiereDialogar = false;
+
+                    playerDialog.puedeInteractuar = false;
+
+                    jugadorEstaCerca = false;
+                    dialogando = false;
+
                     cuadroDeTexto.SetActive(false);
                     Time.timeScale = 1.0f;
-                    dialogando = false;
+
                     return;
                 }
 
-                textoDialogo.text = nombresNpc[actualDialogView] + ":\n" + dialogosNpc[actualDialogView];
+                MostrarDialogo();
             }
         }
+
         if (distance < distanceToInteract)
         {
-            player.puedeDialogar = true;
-            quiereDialogar = true;
+            playerDialog.puedeInteractuar = true;
+            jugadorEstaCerca = true;
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                dialogando = true;
-                Time.timeScale = 0.0f;
-                cuadroDeTexto.SetActive(true);
-                textoDialogo.text = nombresNpc[actualDialogView] + ":\n" + dialogosNpc[actualDialogView];
+                MostrarPrimerDialogo();
             }
         }
-        if (distance > distanceToInteract && quiereDialogar == true)
+
+        if (distance > distanceToInteract && jugadorEstaCerca == true)
         {
             //print("no quiere dialogar :c");
-            player.puedeDialogar = false;
-            quiereDialogar = false;
+            playerDialog.puedeInteractuar = false;
+            jugadorEstaCerca = false;
             cuadroDeTexto.SetActive(false);
         }
+    }
+
+    private void MostrarDialogo()
+    {
+        textoDialogo.text = nombresNpc[actualDialogView] + ":\n" + dialogosNpc[actualDialogView];
+    }
+
+    private void MostrarPrimerDialogo()
+    {
+        dialogando = true;
+        Time.timeScale = 0.0f;
+        cuadroDeTexto.SetActive(true);
+
+        MostrarDialogo();
     }
 }

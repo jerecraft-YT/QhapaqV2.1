@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Playerinput : MonoBehaviour
+public class PlayerInput : MonoBehaviour
 {
     public bool presionoBotonDash;
     public bool presionoBotonAtacar;

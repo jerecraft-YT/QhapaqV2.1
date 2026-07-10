@@ -17,6 +17,7 @@ public class EnemyController : MonoBehaviour
     }
 
     private PlayerController playerController;
+    private PlayerLiveController playerLiveController;
 
     public EnemyState state;
 
@@ -50,9 +51,12 @@ public class EnemyController : MonoBehaviour
 
     public float tiempoQuieto = 0f;
 
+    public bool canDie = true;
+
     private void Start()
     {
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        playerLiveController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLiveController>();
     }
 
     private void Update()
@@ -74,16 +78,6 @@ public class EnemyController : MonoBehaviour
 
     private void LiveController()
     {
-        if (vidaEnemigo <= 0)
-        {
-            if (tieneLlave)
-            {
-                playerController.llaveObtenida = true;
-            }
-
-            Destroy(gameObject);
-        }
-
         if (TimeHit > 0)
         {
             cambiarColor = true;
@@ -100,6 +94,18 @@ public class EnemyController : MonoBehaviour
         }
 
         TimeHit -= Time.deltaTime;
+
+        if (!canDie) return;
+
+        if (vidaEnemigo <= 0)
+        {
+            if (tieneLlave)
+            {
+                playerController.llaveObtenida = true;
+            }
+
+            Destroy(gameObject);
+        }
     }
 
     private void SpriteController()
@@ -130,7 +136,7 @@ public class EnemyController : MonoBehaviour
 
     public void EnemigoGolpeado()
     {
-        TimeHit = 0.1f;
+        TimeHit = 0.15f;
     }
 
     private void EnemyStateController()
@@ -242,8 +248,7 @@ public class EnemyController : MonoBehaviour
 
         if (timeCooldownAttack > cooldownAttack)
         {
-            playerController.QuitarVida();
-            print("te atacaron");
+            playerLiveController.QuitarVida();
             timeCooldownAttack = 0.0f;
         }
     }

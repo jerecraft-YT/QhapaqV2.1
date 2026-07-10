@@ -12,10 +12,14 @@ GameObject:
   - component: {fileID: 7612040431779453520}
   - component: {fileID: 5134338491480677207}
   - component: {fileID: 5165755639603004254}
+  - component: {fileID: 8705673865912852507}
+  - component: {fileID: 2370090366622311300}
+  - component: {fileID: 1093724111168611171}
+  - component: {fileID: 2692940089194846634}
+  - component: {fileID: 924069818144816224}
   - component: {fileID: 6281887025723849344}
   - component: {fileID: 7548667408748254042}
   - component: {fileID: 5341343360518072046}
-  - component: {fileID: 1093724111168611171}
   m_Layer: 6
   m_Name: Sinshi
   m_TagString: Player
@@ -113,27 +117,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd2d13f4a2e8aa34cbac258f6a977a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  input: {fileID: 5165755639603004254}
+  spritePlayer: {fileID: 7612040431779453520}
+  cameraPlayer: {fileID: 0}
   hudController: {fileID: 0}
-  attackReference: {fileID: 4974473367125262379}
-  vidaJugador: 3
-  dashDisponibles: 0
+  dashDisponibles: 1
+  flechasDisponibles: 2
   llaveObtenida: 0
-  "cooldownRecibirDa\xF1o": 2
-  burbujaDialogo: {fileID: 460510308282896958}
-  puedeDialogar: 0
-  speed: 4
-  cooldownAtacar: 0.1
-  dashSpeed: 20
-  cooldownDash: 0.4
-  duracionDash: 0.15
-  recuperacionDash: 5
-  flechasDisponibles: 0
-  flechaPrefab: {fileID: 1501233223391490296, guid: 25bec5c459f294748af3f1aa45a8fd0c, type: 3}
-  espadaPrefab: {fileID: 1501233223391490296, guid: be01de22494978847aba93e19b29459a, type: 3}
-  slashEspadaPrefab: {fileID: 1425347997331995548, guid: 4e86cd83178286d4d8b2d4a74040329f, type: 3}
+  walkSpeed: 4
   EspadaOArcoEquipado: 1
-  poderCambiarArma: 1
   estaMoviendose: 0
 --- !u!114 &5165755639603004254
 MonoBehaviour:
@@ -151,6 +142,96 @@ MonoBehaviour:
   presionoBotonAtacar: 0
   presionoBotonCambiarArma: 0
   direccionMovimiento: {x: 0, y: 0}
+--- !u!114 &8705673865912852507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604520965718977486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94897b97ea1c8c34faed89619684d4d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttackController
+  input: {fileID: 5165755639603004254}
+  playerController: {fileID: 5134338491480677207}
+  flechaPrefab: {fileID: 1501233223391490296, guid: 25bec5c459f294748af3f1aa45a8fd0c, type: 3}
+  espadaPrefab: {fileID: 1501233223391490296, guid: be01de22494978847aba93e19b29459a, type: 3}
+  slashEspadaPrefab: {fileID: 1425347997331995548, guid: 4e86cd83178286d4d8b2d4a74040329f, type: 3}
+  poderCambiarArma: 1
+  cooldownAtacar: 0.4
+  attackReference: {fileID: 4974473367125262379}
+--- !u!114 &2370090366622311300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604520965718977486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ee2b225d33599a4f86ea9636179a466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerLiveController
+  playerController: {fileID: 5134338491480677207}
+  isDeath: 0
+  timeDeath: 0
+  opacidadDeath: 0
+  velocidadOpacidadDeath: 2
+  "cooldownRecibirDa\xF1o": 1
+  vidaJugador: 3
+  velocidadParpadeo: 5
+--- !u!114 &1093724111168611171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604520965718977486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e6ca508e3d9de243834900a8b5465f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimations
+  Animator: {fileID: 5341343360518072046}
+  Controller: {fileID: 5134338491480677207}
+  LiveController: {fileID: 2370090366622311300}
+  playerDeath: 0
+--- !u!114 &2692940089194846634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604520965718977486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76538726640500a4ca3b2ec985750851, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDashController
+  input: {fileID: 5165755639603004254}
+  playerController: {fileID: 5134338491480677207}
+  liveController: {fileID: 2370090366622311300}
+  dashSpeed: 20
+  cooldownDash: 0.4
+  duracionDash: 0.15
+  recuperacionDash: 5
+  haciendoDash: 0
+--- !u!114 &924069818144816224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604520965718977486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3166f64687b2b14db584d4fe4388eaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDialogController
+  burbujaDialogo: {fileID: 460510308282896958}
+  puedeInteractuar: 0
 --- !u!50 &6281887025723849344
 Rigidbody2D:
   serializedVersion: 5
@@ -236,20 +317,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1093724111168611171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 604520965718977486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e6ca508e3d9de243834900a8b5465f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimations
-  Animator: {fileID: 5341343360518072046}
-  Controller: {fileID: 5134338491480677207}
 --- !u!1 &2333152010564941186
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,25 +2,57 @@ using UnityEngine;
 
 public class objetoInteractuable : MonoBehaviour
 {
-    private PlayerController player;
+    private PlayerDialogController playerDialog;
+    private PlayerController playerController;
+
     public float distanceToInteract = 4.0f;
     private SpriteRenderer sprite;
     public lootCaja contenidoCaja;
-    private bool puedeInteractuar = false;
+    private bool JugadorEstaCerca = false;
     public GameObject iconoPrefab;
     public Transform refIcono;
 
     private void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        playerDialog = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerDialogController>();
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        ControlOrden();
 
-        if (player.transform.position.y > transform.position.y)
+        InteractController();
+    }
+
+    private void InteractController()
+    {
+        float distance = Vector3.Distance(transform.position, playerDialog.transform.position);
+
+        if (distance <= distanceToInteract)
+        {
+            playerDialog.puedeInteractuar = true;
+            JugadorEstaCerca = true;
+
+            if (Input.GetKey(KeyCode.E))
+            {
+                OpenBox();
+            }
+        }
+        else if (distance > distanceToInteract && JugadorEstaCerca)
+        {
+            JugadorEstaCerca = false;
+            playerDialog.puedeInteractuar = false;
+        }
+    }
+
+
+    //esta funcion ayuda a que el objeto se vea delante o detras del jugador
+    private void ControlOrden()
+    {
+        if (playerDialog.transform.position.y > transform.position.y)
         {
             sprite.sortingOrder = 1;
         }
@@ -28,39 +60,26 @@ public class objetoInteractuable : MonoBehaviour
         {
             sprite.sortingOrder = -1;
         }
-
-        float distance = Vector3.Distance(transform.position, player.transform.position);
-
-        if (distance <= distanceToInteract)
-        {
-            player.puedeDialogar = true;
-            puedeInteractuar = true;
-
-            if (Input.GetKey(KeyCode.E))
-            {
-                OpenBox();
-            }
-        }
-
-        else if (distance > distanceToInteract && puedeInteractuar)
-        {
-            puedeInteractuar = false;
-            player.puedeDialogar = false;
-        }
     }
 
     public void OpenBox()
     {
-        player.ObtenerItem(contenidoCaja);
-        player.puedeDialogar = false;
+        playerController.ObtenerItem(contenidoCaja);
 
+        playerDialog.puedeInteractuar = false;
+
+        MostrarObjetoObtenido();
+
+        Destroy(gameObject);
+    }
+
+    private void MostrarObjetoObtenido()
+    {
         GameObject iconoCaja = Instantiate(iconoPrefab, refIcono.position, Quaternion.identity);
         IconoCaja scriptIcono = iconoCaja.GetComponent<IconoCaja>();
 
         scriptIcono.contenidoCaja = contenidoCaja;
 
         Destroy(iconoCaja, 0.25f);
-
-        Destroy(gameObject);
     }
 }
