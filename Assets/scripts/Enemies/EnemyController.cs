@@ -20,6 +20,8 @@ public class EnemyController : MonoBehaviour
 
     public EnemyState state;
 
+    public bool CanMove = false;
+
     [SerializeField] private SpriteRenderer spriteEnemy;
 
     [SerializeField] private float enemySpeed = 2.0f;
@@ -55,6 +57,7 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
+
         LiveController();
         SpriteController();
 
@@ -63,6 +66,8 @@ public class EnemyController : MonoBehaviour
             tiempoQuieto -= Time.deltaTime;
             return;
         }
+
+        if (!CanMove) return;
 
         EnemyStateController();
     }

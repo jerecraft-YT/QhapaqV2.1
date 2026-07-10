@@ -254,6 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   state: 0
+  CanMove: 1
   spriteEnemy: {fileID: 6690427140890598363}
   enemySpeed: 3
   vidaEnemigo: 10
@@ -262,7 +263,9 @@ MonoBehaviour:
   timeForPatrol: 2
   distanceForPatrol: 2
   distanceForStopPatrol: 0.1
+  tieneLlave: 0
   cooldownAttack: 0.1
+  tiempoQuieto: 0
 --- !u!212 &6690427140890598363
 SpriteRenderer:
   serializedVersion: 2
