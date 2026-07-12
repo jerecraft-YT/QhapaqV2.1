@@ -6,6 +6,13 @@ public enum lootCaja
     Arco,
 }
 
+public enum enemyToSpawn
+{
+    None,
+    Larva,
+    Saltamontes
+}
+
 public enum lootEnemigo
 {
     None,

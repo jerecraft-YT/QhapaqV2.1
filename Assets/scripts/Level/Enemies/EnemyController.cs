@@ -153,19 +153,15 @@ public class EnemyController : MonoBehaviour
                 state = EnemyState.idle;
                 break;
             case EnemyState.idle:
-                //acciones que hara cuando este quieto
                 EnemyIdle();
                 break;
             case EnemyState.Attack:
-                //acciones que hara cuando este atacando
                 EnemyAttack();
                 break;
             case EnemyState.Chase:
-                //acciones que hara cuando te este persiguiendo
                 EnemyChase();
                 break;
             case EnemyState.Patrol:
-                //acciones que hara cuando este patrullando
                 EnemyPatrol();
                 break;
             default:

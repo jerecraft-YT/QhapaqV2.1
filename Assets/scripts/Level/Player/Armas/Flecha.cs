@@ -6,6 +6,10 @@ public class Flecha : MonoBehaviour
     public float timeLive = 3.0f;
     public float dañoFlecha = 5.0f;
     public GameObject efectoHitPrefab;
+
+    const float ENEMY_STUN_TIME = 0.35f;
+    const float EFFECT_HIT_LIVETIME = 0.2f;
+
     private void Start()
     {
         Destroy(gameObject,timeLive);
@@ -38,7 +42,7 @@ public class Flecha : MonoBehaviour
             float randomRotation = Random.Range(0.0f, 360.0f);
 
             GameObject efectoHit = Instantiate(efectoHitPrefab, objetoInteractuable.transform.position, Quaternion.Euler(0.0f, 0.0f, randomRotation));
-            Destroy(efectoHit, 0.2f);
+            Destroy(efectoHit, EFFECT_HIT_LIVETIME);
         }
 
         Destroy(gameObject);
@@ -48,7 +52,7 @@ public class Flecha : MonoBehaviour
     {
         enemyController.vidaEnemigo -= dañoFlecha;
 
-        enemyController.tiempoQuieto = 0.3f;
+        enemyController.tiempoQuieto = ENEMY_STUN_TIME;
 
         enemyController.EnemigoGolpeado();
     }
@@ -58,6 +62,6 @@ public class Flecha : MonoBehaviour
         float randomRotation = Random.Range(0.0f, 360.0f);
 
         GameObject efectoHit = Instantiate(efectoHitPrefab, enemyController.transform.position, Quaternion.Euler(0.0f, 0.0f, randomRotation));
-        Destroy(efectoHit, 0.2f);
+        Destroy(efectoHit, EFFECT_HIT_LIVETIME);
     }
 }

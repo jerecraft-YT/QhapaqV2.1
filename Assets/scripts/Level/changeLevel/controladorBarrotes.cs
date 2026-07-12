@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class controladorBarrotes : MonoBehaviour
+public class ControladorBarrotes : MonoBehaviour
 {
     private PlayerController playerController;
     public GameObject oscuridad;

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class cambiarNivel : MonoBehaviour
+public class CambiarNivel : MonoBehaviour
 {
     private PlayerController playerController;
     private Image transicionCambiarEscena;
@@ -18,7 +18,7 @@ public class cambiarNivel : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.tag == "Player")
+        if (collision.transform.tag == "Player" && playerController.llaveObtenida)
         {
             print("Superaste el nivel");
 

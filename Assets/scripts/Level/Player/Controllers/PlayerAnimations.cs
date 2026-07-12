@@ -4,7 +4,7 @@ public class PlayerAnimations : MonoBehaviour
 {
     public Animator Animator;
 
-    public PlayerController Controller;
+    public PlayerController playerController;
     public PlayerLiveController LiveController;
 
     public bool playerDeath = false;
@@ -13,8 +13,12 @@ public class PlayerAnimations : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (Controller.enabled == false)
+        AnimationController();
+    }
+
+    private void AnimationController()
+    {
+        if (playerController.enabled == false)
         {
             //si el script del jugador no esta activo hacemos que este quieto
             Animator.SetBool("estaCaminando", false);
@@ -22,7 +26,7 @@ public class PlayerAnimations : MonoBehaviour
         else
         {
             //si puede moverse hacemos que eso dependa del input del jugador
-            Animator.SetBool("estaCaminando", Controller.estaMoviendose);
+            Animator.SetBool("estaCaminando", playerController.estaMoviendose);
         }
 
         if (LiveController.isDeath && !playerDeath)

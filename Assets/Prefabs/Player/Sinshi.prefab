@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimations
   Animator: {fileID: 5341343360518072046}
-  Controller: {fileID: 5134338491480677207}
+  playerController: {fileID: 5134338491480677207}
   LiveController: {fileID: 2370090366622311300}
   playerDeath: 0
 --- !u!114 &2692940089194846634
@@ -213,10 +213,6 @@ MonoBehaviour:
   input: {fileID: 5165755639603004254}
   playerController: {fileID: 5134338491480677207}
   liveController: {fileID: 2370090366622311300}
-  dashSpeed: 20
-  cooldownDash: 0.4
-  duracionDash: 0.15
-  recuperacionDash: 5
   haciendoDash: 0
 --- !u!114 &924069818144816224
 MonoBehaviour:

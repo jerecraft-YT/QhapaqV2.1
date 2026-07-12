@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class SpawnearEnemigos : MonoBehaviour
 {
-    public GameObject enemigo;
+    public GameObject larvaPrefab;
+    public GameObject saltamontesPrefab;
+    public enemyToSpawn enemyToSpawn;
     public float timeToSpawn = 3;
     public float radius = 3;
-    public bool puedeTenerLLave = false;
+    public bool puedeTenerLlave = false;
     [SerializeField] private int numeroEnemigosRonda = 5;
     private PlayerController playerController;
 
@@ -65,23 +67,38 @@ public class SpawnearEnemigos : MonoBehaviour
             print("la ronda de enemigos acabo");
         }
 
-        GameObject enemy = Instantiate(enemigo);
+        GameObject enemy = null;
+
+        switch (enemyToSpawn)
+        {
+            case enemyToSpawn.None:
+                return;
+
+            case enemyToSpawn.Larva:
+                enemy = Instantiate(larvaPrefab);
+                break;
+
+            case enemyToSpawn.Saltamontes:
+                enemy = Instantiate(saltamontesPrefab);
+                break;
+
+            default:
+                return;
+        }
 
         Vector3 randomDirection = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 0.0f).normalized;
 
         enemy.transform.position = transform.position + randomDirection * radius;
 
         EnemyController enemigoScript = enemy.GetComponent<EnemyController>();
-        //enemigoScript.targetEnemy = Target;
 
-        if (puedeTenerLLave)
+        if (puedeTenerLlave)
         {
             if (probabilidadLLave > 60 || numeroEnemigosRonda == 0)
             {
-                puedeTenerLLave = false;
+                puedeTenerLlave = false;
                 enemigoScript.tieneLlave = true;
             }
         }
-
     }
 }

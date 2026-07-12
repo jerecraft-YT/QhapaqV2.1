@@ -6,10 +6,10 @@ public class PlayerDashController : MonoBehaviour
     [SerializeField] private PlayerController playerController;
     [SerializeField] private PlayerLiveController liveController;
 
-    [SerializeField] private float dashSpeed = 20.0f;
-    [SerializeField] private float cooldownDash = 0.4f;
-    [SerializeField] private float duracionDash = 0.15f;
-    [SerializeField] private float recuperacionDash = 5f;
+    private const float dashSpeed = 20.0f;
+    private const float cooldownDash = 0.4f;
+    private const float duracionDash = 0.15f;
+    private const float recuperacionDash = 5f;
 
     private Vector3 ultimaDireccion = Vector2.right;
     public bool haciendoDash;

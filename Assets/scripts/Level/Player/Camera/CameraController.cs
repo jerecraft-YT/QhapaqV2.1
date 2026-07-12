@@ -57,18 +57,20 @@ public class CameraController : MonoBehaviour
 
         //este codigo antes era de un enemigo XD
 
-        float distance = Vector2.Distance(transform.position,targetCamera.position);
+        Vector3 targetPos = targetCamera.position;
+        Vector3 myPos = transform.position;
 
-        //comprobamos esto primero ya que si esta muy cerca del jugador podemos evitar calcular el movimiento
+        float distance = Vector2.Distance(myPos, targetPos);
+
         if (distance < distanceForMove)
         {
             return;
         }
 
-        Vector3 direccionMovimiento = (targetCamera.position - transform.position).normalized;
+        Vector3 direccionMovimiento = (targetPos - myPos).normalized;
 
-        Vector3 direccionSinZ = new Vector3(direccionMovimiento.x, direccionMovimiento.y, 0.0f);
+        direccionMovimiento.z = 0.0f;
 
-        finalPos += Time.deltaTime * CameraSpeed * direccionSinZ;
+        finalPos += Time.deltaTime * CameraSpeed * direccionMovimiento;
     }
 }

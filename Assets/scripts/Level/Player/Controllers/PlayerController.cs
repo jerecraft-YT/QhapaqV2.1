@@ -56,24 +56,31 @@ public class PlayerController : MonoBehaviour
         //si esta haciendo dash no dejaremos que te muevas por tu cuenta
         if (dashController.haciendoDash == false)
         {
-            //mueve al jugador
+            
             Vector3 direccion = new Vector3(direccionMovimientoX, direccionMovimientoY, 0.0f);
 
             if (direccion != Vector3.zero)
             {
-                if (direccion.x < 0.0f)
-                {
-                    spritePlayer.flipX = false;
-                }
-                else
-                {
-                    spritePlayer.flipX = true;
-                }
-                estaMoviendose = true;
+                FlipSpritePlayer(direccion);
             }
 
+            //mueve al jugador
             transform.position += direccion * walkSpeed * Time.deltaTime;
         }
+    }
+
+    private void FlipSpritePlayer(Vector3 direccion)
+    {
+        if (direccion.x < 0.0f)
+        {
+            spritePlayer.flipX = false;
+        }
+        else if (direccion.x > 0.0f)
+        {
+            spritePlayer.flipX = true;
+        }
+
+        estaMoviendose = true;
     }
 
     public void ObtenerDash(int cantidad)

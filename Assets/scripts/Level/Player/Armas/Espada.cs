@@ -6,6 +6,10 @@ public class Espada : MonoBehaviour
     public float dañoEspada = 2.0f;
     public float range = 1.0f;
     public GameObject efectoHitPrefab;
+
+    const float ENEMY_STUN_TIME = 0.35f;
+    const float EFFECT_HIT_LIVETIME = 0.2f;
+
     private void Start()
     {
         Destroy(gameObject,timeLive);
@@ -20,14 +24,17 @@ public class Espada : MonoBehaviour
 
             enemyController.vidaEnemigo -= dañoEspada;
 
-            enemyController.tiempoQuieto = 0.35f;
+            enemyController.tiempoQuieto = ENEMY_STUN_TIME;
 
             enemyController.EnemigoGolpeado();
 
             float randomRotation = Random.Range(0.0f, 360.0f);
 
-            GameObject efectoHit = Instantiate(efectoHitPrefab, enemyController.transform.position, Quaternion.Euler(0.0f,0.0f,randomRotation));
-            Destroy(efectoHit, 0.2f);
+            GameObject efectoHit = Instantiate(efectoHitPrefab, 
+                enemyController.transform.position, 
+                Quaternion.Euler(0.0f,0.0f,randomRotation));
+
+            Destroy(efectoHit, EFFECT_HIT_LIVETIME);
         }
 
         if (collision.gameObject.tag == "Caja")
@@ -41,7 +48,7 @@ public class Espada : MonoBehaviour
             float randomRotation = Random.Range(0.0f, 360.0f);
 
             GameObject efectoHit = Instantiate(efectoHitPrefab, objetoInteractuable.transform.position, Quaternion.Euler(0.0f, 0.0f, randomRotation));
-            Destroy(efectoHit, 0.2f);
+            Destroy(efectoHit, EFFECT_HIT_LIVETIME);
         }
 
         Destroy(gameObject);

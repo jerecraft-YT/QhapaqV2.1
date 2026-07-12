@@ -45,6 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   enemigo: {fileID: 8053733778598811613, guid: be5c7547721add145a7af0783dca73ef, type: 3}
+  larvaPrefab: {fileID: 8053733778598811613, guid: be5c7547721add145a7af0783dca73ef, type: 3}
+  saltamontesPrefab: {fileID: 8053733778598811613, guid: cb73426fdd215c24bab6442ff68f7c96, type: 3}
+  enemyToSpawn: 0
   timeToSpawn: 3
   radius: 2.5
+  puedeTenerLlave: 0
   numeroEnemigosRonda: 5
