@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class PlayerLiveController : MonoBehaviour
 {
     public PlayerController playerController;
+    public PlayerAttackController attackController;
 
     public bool isDeath;
 
@@ -80,6 +81,7 @@ public class PlayerLiveController : MonoBehaviour
             playerController.UpdateHUD();
 
             playerController.enabled = false;
+            attackController.enabled = false;
         }
     }
 

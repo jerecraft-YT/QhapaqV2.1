@@ -175,6 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerLiveController
   playerController: {fileID: 5134338491480677207}
+  attackController: {fileID: 8705673865912852507}
   isDeath: 0
   timeDeath: 0
   opacidadDeath: 0
