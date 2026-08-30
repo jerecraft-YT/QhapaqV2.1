@@ -20,7 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainGame/Niveles/Mazmorra3.unity
     guid: 855eb5891e7dd4347a432eb86b87b5f2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainGame/Niveles/JefeFinal.unity
     guid: 3e577c1a25795e347a778e757b558c76
   m_configObjects:
